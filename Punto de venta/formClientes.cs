@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Punto_de_venta
 {
-    public partial class Form1 : Form
+    public partial class formClientes : Form
     {
-        public Form1()
+        public formClientes()
         {
             InitializeComponent();
         }
