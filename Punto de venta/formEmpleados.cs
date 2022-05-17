@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Data.SqlTypes;
-using System.IO;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Punto_de_venta
 {
@@ -30,13 +28,13 @@ namespace Punto_de_venta
                 //se transforma la imagen en un array de bits para su posterior insercion en la base de datos y controla los nulos
                 byte[] image = pbFoto.Image == null ? null : Utilidades.imageToByteArray(pbFoto.Image, pbFoto.Image.RawFormat);
                 //peticion de un sp a la base de datos para actualizar un nuevo cliente
-                queriesTableAdapter1.Sp_EmpleadosUpdate(Convert.ToInt32(tbIdEmpleado.Text),tbApPaterno.Text, tbApMaterno.Text, tbNombre.Text, dtpFecNacimiento.Value,
+                queriesTableAdapter1.Sp_EmpleadosUpdate(Convert.ToInt32(tbIdEmpleado.Text), tbApPaterno.Text, tbApMaterno.Text, tbNombre.Text, dtpFecNacimiento.Value,
                     dtpFecContratacion.Value, tbTelefono.Text, image, tbNotas.Text, cbSexo.Text);
             }
 
             sp_EmpleadosSelectAllTableAdapter.Fill(puntoDeVentaDataSet.Sp_EmpleadosSelectAll);
-            if(tbPage.Text != String.Empty)
-                sp_EmpleadosSelectTableAdapter.Fill(puntoDeVentaDataSet.Sp_EmpleadosSelect,Convert.ToInt32(tbPage.Text));
+            if (tbPage.Text != String.Empty)
+                sp_EmpleadosSelectTableAdapter.Fill(puntoDeVentaDataSet.Sp_EmpleadosSelect, Convert.ToInt32(tbPage.Text));
         }
 
         private void btnAgregarFoto_Click(object sender, EventArgs e)
@@ -45,7 +43,7 @@ namespace Punto_de_venta
             Image image = Utilidades.PickAImage();
             if (image != null)
                 pbFoto.Image = image;
-      
+
         }
 
         private void formEmpleados_Load(object sender, EventArgs e)
@@ -61,7 +59,7 @@ namespace Punto_de_venta
             //al seleccionar una fila en el datagrid los datos de este seran copiados al formulario
             pbFoto.Image = Utilidades.ObjectToImage(dataGridView.Rows[e.RowIndex].Cells[7].Value);
             tbNombre.Text = dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-           tbApPaterno.Text = dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            tbApPaterno.Text = dataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
             tbApMaterno.Text = dataGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
             cbSexo.Text = dataGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
             dtpFecNacimiento.Value = (DateTime)dataGridView.Rows[e.RowIndex].Cells[5].Value;
@@ -100,7 +98,12 @@ namespace Punto_de_venta
 
         private void rdBorrar_CheckedChanged(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

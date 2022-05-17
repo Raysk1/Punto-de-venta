@@ -230,7 +230,7 @@
             // 
             this.dtpFecNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecNacimiento.Location = new System.Drawing.Point(205, 172);
+            this.dtpFecNacimiento.Location = new System.Drawing.Point(205, 175);
             this.dtpFecNacimiento.Margin = new System.Windows.Forms.Padding(6);
             this.dtpFecNacimiento.Name = "dtpFecNacimiento";
             this.dtpFecNacimiento.Size = new System.Drawing.Size(194, 20);
@@ -338,7 +338,7 @@
             // 
             this.lblFechaNac.AutoSize = true;
             this.lblFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaNac.Location = new System.Drawing.Point(84, 179);
+            this.lblFechaNac.Location = new System.Drawing.Point(84, 175);
             this.lblFechaNac.Name = "lblFechaNac";
             this.lblFechaNac.Size = new System.Drawing.Size(119, 16);
             this.lblFechaNac.TabIndex = 4;
@@ -688,6 +688,7 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(1081, 286);
             this.dataGridView.TabIndex = 3;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             this.dataGridView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_RowEnter);
             // 
             // idEmpleadoDataGridViewTextBoxColumn

@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace Punto_de_venta
@@ -22,7 +21,7 @@ namespace Punto_de_venta
 
         public static Image byteArrayToImage(byte[] byteArrayIn)
         {
-           if(byteArrayIn != null)
+            if (byteArrayIn != null)
             {
                 MemoryStream ms = new MemoryStream(byteArrayIn);
                 Image returnImage = Image.FromStream(ms);
@@ -48,7 +47,7 @@ namespace Punto_de_venta
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
                     image = Image.FromStream(fileStream);
-                 
+
                 }
                 return image;
             }
@@ -57,7 +56,7 @@ namespace Punto_de_venta
         public static Image ObjectToImage(object o)
         {
             var ob = o as byte[];
-           return byteArrayToImage(ob);
+            return byteArrayToImage(ob);
         }
     }
 }
