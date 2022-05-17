@@ -15,7 +15,7 @@ namespace Punto_de_venta
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //si el rd esta seleccionado para nuevo se aplica un isert
+            //si el rd esta seleccionado para nuevo se aplica un insert
             if (rdNuevo.Checked)
             {
                 //se transforma la imagen en un array de bits para su posterior insercion en la base de datos y controla los nulos

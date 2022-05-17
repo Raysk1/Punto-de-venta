@@ -80,6 +80,7 @@
             this.idEmpleadoToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.tbBuscarId = new System.Windows.Forms.ToolStripTextBox();
             this.btnBuscarId = new System.Windows.Forms.ToolStripButton();
+            this.btnBorrarBusqueda = new System.Windows.Forms.ToolStripButton();
             this.sp_EmpleadosSelectAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sp_EmpleadosSelectAllTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_EmpleadosSelectAllTableAdapter();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -93,7 +94,7 @@
             this.fotoDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.notasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnBorrarBusqueda = new System.Windows.Forms.ToolStripButton();
+            this.queriesTableAdapter2 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter();
             this.panelDatos.SuspendLayout();
             this.gbEmpleados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
@@ -645,6 +646,15 @@
             this.btnBuscarId.Text = "Buscar";
             this.btnBuscarId.Click += new System.EventHandler(this.btnBuscarId_Click);
             // 
+            // btnBorrarBusqueda
+            // 
+            this.btnBorrarBusqueda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnBorrarBusqueda.MergeIndex = 0;
+            this.btnBorrarBusqueda.Name = "btnBorrarBusqueda";
+            this.btnBorrarBusqueda.Size = new System.Drawing.Size(43, 22);
+            this.btnBorrarBusqueda.Text = "Borrar";
+            this.btnBorrarBusqueda.Click += new System.EventHandler(this.btnBorrarBusqueda_Click);
+            // 
             // sp_EmpleadosSelectAllBindingSource
             // 
             this.sp_EmpleadosSelectAllBindingSource.DataMember = "Sp_EmpleadosSelectAll";
@@ -759,15 +769,6 @@
             this.telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
             this.telefonoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // btnBorrarBusqueda
-            // 
-            this.btnBorrarBusqueda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnBorrarBusqueda.MergeIndex = 0;
-            this.btnBorrarBusqueda.Name = "btnBorrarBusqueda";
-            this.btnBorrarBusqueda.Size = new System.Drawing.Size(43, 22);
-            this.btnBorrarBusqueda.Text = "Borrar";
-            this.btnBorrarBusqueda.Click += new System.EventHandler(this.btnBorrarBusqueda_Click);
-            // 
             // formEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -866,5 +867,6 @@
         private System.Windows.Forms.TextBox tbIdEmpleado;
         private System.Windows.Forms.Label lblIdEmpleado;
         private System.Windows.Forms.ToolStripButton btnBorrarBusqueda;
+        private PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter queriesTableAdapter2;
     }
 }

@@ -26,8 +26,8 @@ namespace Punto_de_venta.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=OSCAR\\SQLEXPRESS;Initial Catalog=PuntoDeVenta;User ID=OS;Password=123" +
-            "")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=tcp:25.50.140.217\\SQLEXPRESS;Initial Catalog=PuntoDeVenta;User ID=OS;" +
+            "Password=123")]
         public string PuntoDeVentaConnectionString {
             get {
                 return ((string)(this["PuntoDeVentaConnectionString"]));
