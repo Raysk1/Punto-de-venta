@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbClientes = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.cbSexo = new System.Windows.Forms.ComboBox();
             this.lblSexo = new System.Windows.Forms.Label();
-            this.pbSalir = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.dtpFecNacimiento = new System.Windows.Forms.DateTimePicker();
             this.tbNombre = new System.Windows.Forms.TextBox();
+            this.sp_ClientesSelectAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.puntoDeVentaDataSet = new Punto_de_venta.PuntoDeVentaDataSet();
             this.tbApPaterno = new System.Windows.Forms.TextBox();
             this.tbApMaterno = new System.Windows.Forms.TextBox();
             this.tbTelefono = new System.Windows.Forms.TextBox();
@@ -47,24 +46,33 @@
             this.lblFechaNac = new System.Windows.Forms.Label();
             this.lblApMaterno = new System.Windows.Forms.Label();
             this.lblIdCliente = new System.Windows.Forms.Label();
-            this.tbIdEmpleado = new System.Windows.Forms.TextBox();
+            this.tbIdCliente = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.sp_ClientesSelectAllTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_ClientesSelectAllTableAdapter();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rdInfo = new System.Windows.Forms.RadioButton();
+            this.rdBorrar = new System.Windows.Forms.RadioButton();
+            this.rdActualizar = new System.Windows.Forms.RadioButton();
+            this.rdNuevo = new System.Windows.Forms.RadioButton();
+            this.queriesTableAdapter1 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter();
+            this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCliente1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoPaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoMaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teléfonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbClientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectAllBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbClientes
             // 
-            this.gbClientes.Controls.Add(this.dataGridView1);
+            this.gbClientes.Controls.Add(this.btnGuardar);
             this.gbClientes.Controls.Add(this.cbSexo);
             this.gbClientes.Controls.Add(this.lblSexo);
-            this.gbClientes.Controls.Add(this.pbSalir);
-            this.gbClientes.Controls.Add(this.pictureBox4);
-            this.gbClientes.Controls.Add(this.pictureBox3);
-            this.gbClientes.Controls.Add(this.pictureBox2);
             this.gbClientes.Controls.Add(this.dtpFecNacimiento);
             this.gbClientes.Controls.Add(this.tbNombre);
             this.gbClientes.Controls.Add(this.tbApPaterno);
@@ -76,21 +84,22 @@
             this.gbClientes.Controls.Add(this.lblFechaNac);
             this.gbClientes.Controls.Add(this.lblApMaterno);
             this.gbClientes.Controls.Add(this.lblIdCliente);
-            this.gbClientes.Controls.Add(this.tbIdEmpleado);
-            this.gbClientes.Location = new System.Drawing.Point(13, 12);
+            this.gbClientes.Controls.Add(this.tbIdCliente);
+            this.gbClientes.Location = new System.Drawing.Point(0, 96);
             this.gbClientes.Name = "gbClientes";
-            this.gbClientes.Size = new System.Drawing.Size(659, 436);
+            this.gbClientes.Size = new System.Drawing.Size(1081, 317);
             this.gbClientes.TabIndex = 19;
             this.gbClientes.TabStop = false;
-            this.gbClientes.Text = "Clientes";
             // 
-            // dataGridView1
+            // btnGuardar
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(343, 49);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 213);
-            this.dataGridView1.TabIndex = 33;
+            this.btnGuardar.Location = new System.Drawing.Point(432, 240);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 12;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // cbSexo
             // 
@@ -113,38 +122,6 @@
             this.lblSexo.TabIndex = 31;
             this.lblSexo.Text = "Sexo:";
             // 
-            // pbSalir
-            // 
-            this.pbSalir.Location = new System.Drawing.Point(6, 402);
-            this.pbSalir.Name = "pbSalir";
-            this.pbSalir.Size = new System.Drawing.Size(75, 28);
-            this.pbSalir.TabIndex = 30;
-            this.pbSalir.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Location = new System.Drawing.Point(483, 333);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox4.TabIndex = 29;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(309, 333);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox3.TabIndex = 28;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(134, 333);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.TabIndex = 27;
-            this.pictureBox2.TabStop = false;
-            // 
             // dtpFecNacimiento
             // 
             this.dtpFecNacimiento.Location = new System.Drawing.Point(134, 242);
@@ -154,28 +131,46 @@
             // 
             // tbNombre
             // 
+            this.tbNombre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "Nombre", true));
             this.tbNombre.Location = new System.Drawing.Point(134, 80);
+            this.tbNombre.MaxLength = 30;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(200, 20);
             this.tbNombre.TabIndex = 22;
             // 
+            // sp_ClientesSelectAllBindingSource
+            // 
+            this.sp_ClientesSelectAllBindingSource.DataMember = "Sp_ClientesSelectAll";
+            this.sp_ClientesSelectAllBindingSource.DataSource = this.puntoDeVentaDataSet;
+            // 
+            // puntoDeVentaDataSet
+            // 
+            this.puntoDeVentaDataSet.DataSetName = "PuntoDeVentaDataSet";
+            this.puntoDeVentaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tbApPaterno
             // 
+            this.tbApPaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "ApellidoPaterno", true));
             this.tbApPaterno.Location = new System.Drawing.Point(134, 112);
+            this.tbApPaterno.MaxLength = 30;
             this.tbApPaterno.Name = "tbApPaterno";
             this.tbApPaterno.Size = new System.Drawing.Size(200, 20);
             this.tbApPaterno.TabIndex = 21;
             // 
             // tbApMaterno
             // 
+            this.tbApMaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "ApellidoMaterno", true));
             this.tbApMaterno.Location = new System.Drawing.Point(134, 144);
+            this.tbApMaterno.MaxLength = 30;
             this.tbApMaterno.Name = "tbApMaterno";
             this.tbApMaterno.Size = new System.Drawing.Size(200, 20);
             this.tbApMaterno.TabIndex = 20;
             // 
             // tbTelefono
             // 
+            this.tbTelefono.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "Teléfono", true));
             this.tbTelefono.Location = new System.Drawing.Point(134, 175);
+            this.tbTelefono.MaxLength = 10;
             this.tbTelefono.Name = "tbTelefono";
             this.tbTelefono.Size = new System.Drawing.Size(200, 20);
             this.tbTelefono.TabIndex = 16;
@@ -234,28 +229,207 @@
             this.lblIdCliente.TabIndex = 1;
             this.lblIdCliente.Text = "ID Cliente:";
             // 
-            // tbIdEmpleado
+            // tbIdCliente
             // 
-            this.tbIdEmpleado.Location = new System.Drawing.Point(134, 49);
-            this.tbIdEmpleado.Name = "tbIdEmpleado";
-            this.tbIdEmpleado.Size = new System.Drawing.Size(200, 20);
-            this.tbIdEmpleado.TabIndex = 0;
+            this.tbIdCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "IdCliente", true));
+            this.tbIdCliente.Location = new System.Drawing.Point(134, 49);
+            this.tbIdCliente.Name = "tbIdCliente";
+            this.tbIdCliente.Size = new System.Drawing.Size(200, 20);
+            this.tbIdCliente.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idClienteDataGridViewTextBoxColumn,
+            this.idCliente1DataGridViewTextBoxColumn,
+            this.nombreDataGridViewTextBoxColumn,
+            this.apellidoPaternoDataGridViewTextBoxColumn,
+            this.apellidoMaternoDataGridViewTextBoxColumn,
+            this.teléfonoDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.sp_ClientesSelectAllBindingSource;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 463);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1081, 286);
+            this.dataGridView1.TabIndex = 20;
+            // 
+            // sp_ClientesSelectAllTableAdapter
+            // 
+            this.sp_ClientesSelectAllTableAdapter.ClearBeforeFill = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.rdInfo);
+            this.panel2.Controls.Add(this.rdBorrar);
+            this.panel2.Controls.Add(this.rdActualizar);
+            this.panel2.Controls.Add(this.rdNuevo);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1081, 96);
+            this.panel2.TabIndex = 22;
+            // 
+            // rdInfo
+            // 
+            this.rdInfo.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.rdInfo.Checked = true;
+            this.rdInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rdInfo.FlatAppearance.BorderSize = 0;
+            this.rdInfo.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.rdInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.rdInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdInfo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdInfo.ForeColor = System.Drawing.Color.White;
+            this.rdInfo.Image = global::Punto_de_venta.Properties.Resources.informacion;
+            this.rdInfo.Location = new System.Drawing.Point(812, 0);
+            this.rdInfo.Margin = new System.Windows.Forms.Padding(0);
+            this.rdInfo.Name = "rdInfo";
+            this.rdInfo.Size = new System.Drawing.Size(270, 96);
+            this.rdInfo.TabIndex = 11;
+            this.rdInfo.TabStop = true;
+            this.rdInfo.Text = "Informacion";
+            this.rdInfo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.rdInfo.UseVisualStyleBackColor = false;
+            this.rdInfo.CheckedChanged += new System.EventHandler(this.rdInfo_CheckedChanged);
+            // 
+            // rdBorrar
+            // 
+            this.rdBorrar.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdBorrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.rdBorrar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rdBorrar.FlatAppearance.BorderSize = 0;
+            this.rdBorrar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.rdBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.rdBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdBorrar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdBorrar.ForeColor = System.Drawing.Color.White;
+            this.rdBorrar.Image = global::Punto_de_venta.Properties.Resources.borrar__1_;
+            this.rdBorrar.Location = new System.Drawing.Point(541, 0);
+            this.rdBorrar.Margin = new System.Windows.Forms.Padding(0);
+            this.rdBorrar.Name = "rdBorrar";
+            this.rdBorrar.Size = new System.Drawing.Size(271, 96);
+            this.rdBorrar.TabIndex = 10;
+            this.rdBorrar.Text = "Borrar";
+            this.rdBorrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.rdBorrar.UseVisualStyleBackColor = false;
+            // 
+            // rdActualizar
+            // 
+            this.rdActualizar.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.rdActualizar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rdActualizar.FlatAppearance.BorderSize = 0;
+            this.rdActualizar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.rdActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.rdActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdActualizar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdActualizar.ForeColor = System.Drawing.Color.White;
+            this.rdActualizar.Image = global::Punto_de_venta.Properties.Resources.actualizado__1_;
+            this.rdActualizar.Location = new System.Drawing.Point(270, 0);
+            this.rdActualizar.Margin = new System.Windows.Forms.Padding(0);
+            this.rdActualizar.Name = "rdActualizar";
+            this.rdActualizar.Size = new System.Drawing.Size(271, 96);
+            this.rdActualizar.TabIndex = 9;
+            this.rdActualizar.Text = "Actualizar";
+            this.rdActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.rdActualizar.UseVisualStyleBackColor = false;
+            // 
+            // rdNuevo
+            // 
+            this.rdNuevo.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.rdNuevo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.rdNuevo.FlatAppearance.BorderSize = 0;
+            this.rdNuevo.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.rdNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.rdNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdNuevo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdNuevo.ForeColor = System.Drawing.Color.White;
+            this.rdNuevo.Image = global::Punto_de_venta.Properties.Resources.boton_agregar;
+            this.rdNuevo.Location = new System.Drawing.Point(0, 0);
+            this.rdNuevo.Margin = new System.Windows.Forms.Padding(0);
+            this.rdNuevo.Name = "rdNuevo";
+            this.rdNuevo.Size = new System.Drawing.Size(270, 96);
+            this.rdNuevo.TabIndex = 8;
+            this.rdNuevo.Text = "Nuevo";
+            this.rdNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rdNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.rdNuevo.UseVisualStyleBackColor = false;
+            // 
+            // idClienteDataGridViewTextBoxColumn
+            // 
+            this.idClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idClienteDataGridViewTextBoxColumn.DataPropertyName = "IdCliente";
+            this.idClienteDataGridViewTextBoxColumn.HeaderText = "IdCliente";
+            this.idClienteDataGridViewTextBoxColumn.Name = "idClienteDataGridViewTextBoxColumn";
+            this.idClienteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idCliente1DataGridViewTextBoxColumn
+            // 
+            this.idCliente1DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idCliente1DataGridViewTextBoxColumn.DataPropertyName = "IdCliente1";
+            this.idCliente1DataGridViewTextBoxColumn.HeaderText = "IdCliente1";
+            this.idCliente1DataGridViewTextBoxColumn.Name = "idCliente1DataGridViewTextBoxColumn";
+            this.idCliente1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // apellidoPaternoDataGridViewTextBoxColumn
+            // 
+            this.apellidoPaternoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apellidoPaternoDataGridViewTextBoxColumn.DataPropertyName = "ApellidoPaterno";
+            this.apellidoPaternoDataGridViewTextBoxColumn.HeaderText = "ApellidoPaterno";
+            this.apellidoPaternoDataGridViewTextBoxColumn.Name = "apellidoPaternoDataGridViewTextBoxColumn";
+            this.apellidoPaternoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // apellidoMaternoDataGridViewTextBoxColumn
+            // 
+            this.apellidoMaternoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apellidoMaternoDataGridViewTextBoxColumn.DataPropertyName = "ApellidoMaterno";
+            this.apellidoMaternoDataGridViewTextBoxColumn.HeaderText = "ApellidoMaterno";
+            this.apellidoMaternoDataGridViewTextBoxColumn.Name = "apellidoMaternoDataGridViewTextBoxColumn";
+            this.apellidoMaternoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // teléfonoDataGridViewTextBoxColumn
+            // 
+            this.teléfonoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.teléfonoDataGridViewTextBoxColumn.DataPropertyName = "Teléfono";
+            this.teléfonoDataGridViewTextBoxColumn.HeaderText = "Teléfono";
+            this.teléfonoDataGridViewTextBoxColumn.Name = "teléfonoDataGridViewTextBoxColumn";
+            this.teléfonoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // formClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.ClientSize = new System.Drawing.Size(1081, 749);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.gbClientes);
             this.Name = "formClientes";
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.formClientes_Load);
             this.gbClientes.ResumeLayout(false);
             this.gbClientes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectAllBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSalir)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -263,10 +437,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbClientes;
-        private System.Windows.Forms.PictureBox pbSalir;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.TextBox tbApPaterno;
         private System.Windows.Forms.TextBox tbApMaterno;
@@ -276,11 +446,27 @@
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.Label lblApMaterno;
         private System.Windows.Forms.Label lblIdCliente;
-        private System.Windows.Forms.TextBox tbIdEmpleado;
+        private System.Windows.Forms.TextBox tbIdCliente;
         private System.Windows.Forms.ComboBox cbSexo;
         private System.Windows.Forms.Label lblSexo;
         private System.Windows.Forms.DateTimePicker dtpFecNacimiento;
         private System.Windows.Forms.Label lblFechaNac;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private PuntoDeVentaDataSet puntoDeVentaDataSet;
+        private System.Windows.Forms.BindingSource sp_ClientesSelectAllBindingSource;
+        private PuntoDeVentaDataSetTableAdapters.Sp_ClientesSelectAllTableAdapter sp_ClientesSelectAllTableAdapter;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton rdInfo;
+        private System.Windows.Forms.RadioButton rdBorrar;
+        private System.Windows.Forms.RadioButton rdActualizar;
+        private System.Windows.Forms.RadioButton rdNuevo;
+        private System.Windows.Forms.Button btnGuardar;
+        private PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter queriesTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idClienteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCliente1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaternoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaternoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teléfonoDataGridViewTextBoxColumn;
     }
 }

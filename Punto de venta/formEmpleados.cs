@@ -136,5 +136,10 @@ namespace Punto_de_venta
             //esta linea hace que el textbox solo acepte numeros
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
