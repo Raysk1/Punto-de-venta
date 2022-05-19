@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Punto_de_venta
 {
@@ -46,7 +39,7 @@ namespace Punto_de_venta
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            btninicio_Click(null ,e);
+            btninicio_Click(null, e);
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -102,12 +95,12 @@ namespace Punto_de_venta
 
         private void btnproductos_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btninicio_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnEmpleados_Click(object sender, EventArgs e)

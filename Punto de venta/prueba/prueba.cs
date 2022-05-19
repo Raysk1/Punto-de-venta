@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Punto_de_venta.prueba
@@ -37,17 +36,17 @@ namespace Punto_de_venta.prueba
 
         private void sp_EmpleadosSelectAllDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-          
+
 
         }
 
         private void sp_EmpleadosSelectAllDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {   
+        {
             //devuelve los datos de la fila seleccionada
-           
+
         }
 
-     
+
 
         private void fillToolStripButton_Click_1(object sender, EventArgs e)
         {
