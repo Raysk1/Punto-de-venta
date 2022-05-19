@@ -241,6 +241,7 @@
             this.tbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNombre.Location = new System.Drawing.Point(205, 43);
             this.tbNombre.Margin = new System.Windows.Forms.Padding(6);
+            this.tbNombre.MaxLength = 30;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(194, 22);
             this.tbNombre.TabIndex = 2;
@@ -248,8 +249,9 @@
             // tbApPaterno
             // 
             this.tbApPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbApPaterno.Location = new System.Drawing.Point(205, 107);
+            this.tbApPaterno.Location = new System.Drawing.Point(205, 74);
             this.tbApPaterno.Margin = new System.Windows.Forms.Padding(6);
+            this.tbApPaterno.MaxLength = 30;
             this.tbApPaterno.Name = "tbApPaterno";
             this.tbApPaterno.Size = new System.Drawing.Size(194, 22);
             this.tbApPaterno.TabIndex = 3;
@@ -257,7 +259,7 @@
             // tbApMaterno
             // 
             this.tbApMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbApMaterno.Location = new System.Drawing.Point(205, 75);
+            this.tbApMaterno.Location = new System.Drawing.Point(205, 105);
             this.tbApMaterno.Margin = new System.Windows.Forms.Padding(6);
             this.tbApMaterno.Name = "tbApMaterno";
             this.tbApMaterno.Size = new System.Drawing.Size(194, 22);
@@ -297,7 +299,7 @@
             // 
             this.lblApPaterno.AutoSize = true;
             this.lblApPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApPaterno.Location = new System.Drawing.Point(90, 113);
+            this.lblApPaterno.Location = new System.Drawing.Point(90, 77);
             this.lblApPaterno.Margin = new System.Windows.Forms.Padding(6);
             this.lblApPaterno.Name = "lblApPaterno";
             this.lblApPaterno.Size = new System.Drawing.Size(110, 16);
@@ -358,7 +360,7 @@
             // 
             this.lblApMaterno.AutoSize = true;
             this.lblApMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApMaterno.Location = new System.Drawing.Point(91, 81);
+            this.lblApMaterno.Location = new System.Drawing.Point(91, 111);
             this.lblApMaterno.Name = "lblApMaterno";
             this.lblApMaterno.Size = new System.Drawing.Size(112, 16);
             this.lblApMaterno.TabIndex = 2;

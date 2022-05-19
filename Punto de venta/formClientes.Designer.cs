@@ -35,6 +35,8 @@
             this.lblSexo = new System.Windows.Forms.Label();
             this.dtpFecNacimiento = new System.Windows.Forms.DateTimePicker();
             this.tbNombre = new System.Windows.Forms.TextBox();
+            this.sp_ClientesSelectAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.puntoDeVentaDataSet = new Punto_de_venta.PuntoDeVentaDataSet();
             this.tbApPaterno = new System.Windows.Forms.TextBox();
             this.tbApMaterno = new System.Windows.Forms.TextBox();
             this.tbTelefono = new System.Windows.Forms.TextBox();
@@ -46,20 +48,6 @@
             this.lblIdCliente = new System.Windows.Forms.Label();
             this.tbIdCliente = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idCliente1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidoPaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidoMaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teléfonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sp_ClientesSelectAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.puntoDeVentaDataSet = new Punto_de_venta.PuntoDeVentaDataSet();
-            this.sp_ClientesSelectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ClientesSelectTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_ClientesSelectTableAdapter();
-            this.tableAdapterManager = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager();
-            this.btnBuscarId = new System.Windows.Forms.ToolStrip();
-            this.idClienteToolStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.tbBuscarId = new System.Windows.Forms.ToolStripTextBox();
             this.sp_ClientesSelectAllTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_ClientesSelectAllTableAdapter();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rdInfo = new System.Windows.Forms.RadioButton();
@@ -67,14 +55,16 @@
             this.rdActualizar = new System.Windows.Forms.RadioButton();
             this.rdNuevo = new System.Windows.Forms.RadioButton();
             this.queriesTableAdapter1 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter();
-            this.btnBorrarBusqueda = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCliente1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoPaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoMaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teléfonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbClientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectAllBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectBindingSource)).BeginInit();
-            this.btnBuscarId.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,28 +131,46 @@
             // 
             // tbNombre
             // 
+            this.tbNombre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "Nombre", true));
             this.tbNombre.Location = new System.Drawing.Point(134, 80);
+            this.tbNombre.MaxLength = 30;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(200, 20);
             this.tbNombre.TabIndex = 22;
             // 
+            // sp_ClientesSelectAllBindingSource
+            // 
+            this.sp_ClientesSelectAllBindingSource.DataMember = "Sp_ClientesSelectAll";
+            this.sp_ClientesSelectAllBindingSource.DataSource = this.puntoDeVentaDataSet;
+            // 
+            // puntoDeVentaDataSet
+            // 
+            this.puntoDeVentaDataSet.DataSetName = "PuntoDeVentaDataSet";
+            this.puntoDeVentaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tbApPaterno
             // 
+            this.tbApPaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "ApellidoPaterno", true));
             this.tbApPaterno.Location = new System.Drawing.Point(134, 112);
+            this.tbApPaterno.MaxLength = 30;
             this.tbApPaterno.Name = "tbApPaterno";
             this.tbApPaterno.Size = new System.Drawing.Size(200, 20);
             this.tbApPaterno.TabIndex = 21;
             // 
             // tbApMaterno
             // 
+            this.tbApMaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "ApellidoMaterno", true));
             this.tbApMaterno.Location = new System.Drawing.Point(134, 144);
+            this.tbApMaterno.MaxLength = 30;
             this.tbApMaterno.Name = "tbApMaterno";
             this.tbApMaterno.Size = new System.Drawing.Size(200, 20);
             this.tbApMaterno.TabIndex = 20;
             // 
             // tbTelefono
             // 
+            this.tbTelefono.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "Teléfono", true));
             this.tbTelefono.Location = new System.Drawing.Point(134, 175);
+            this.tbTelefono.MaxLength = 10;
             this.tbTelefono.Name = "tbTelefono";
             this.tbTelefono.Size = new System.Drawing.Size(200, 20);
             this.tbTelefono.TabIndex = 16;
@@ -223,6 +231,7 @@
             // 
             // tbIdCliente
             // 
+            this.tbIdCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "IdCliente", true));
             this.tbIdCliente.Location = new System.Drawing.Point(134, 49);
             this.tbIdCliente.Name = "tbIdCliente";
             this.tbIdCliente.Size = new System.Drawing.Size(200, 20);
@@ -230,6 +239,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -243,99 +254,9 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 463);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1081, 286);
             this.dataGridView1.TabIndex = 20;
-            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
-            // 
-            // idClienteDataGridViewTextBoxColumn
-            // 
-            this.idClienteDataGridViewTextBoxColumn.DataPropertyName = "IdCliente";
-            this.idClienteDataGridViewTextBoxColumn.HeaderText = "IdCliente";
-            this.idClienteDataGridViewTextBoxColumn.Name = "idClienteDataGridViewTextBoxColumn";
-            this.idClienteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idCliente1DataGridViewTextBoxColumn
-            // 
-            this.idCliente1DataGridViewTextBoxColumn.DataPropertyName = "IdCliente1";
-            this.idCliente1DataGridViewTextBoxColumn.HeaderText = "IdCliente1";
-            this.idCliente1DataGridViewTextBoxColumn.Name = "idCliente1DataGridViewTextBoxColumn";
-            this.idCliente1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            // 
-            // apellidoPaternoDataGridViewTextBoxColumn
-            // 
-            this.apellidoPaternoDataGridViewTextBoxColumn.DataPropertyName = "ApellidoPaterno";
-            this.apellidoPaternoDataGridViewTextBoxColumn.HeaderText = "ApellidoPaterno";
-            this.apellidoPaternoDataGridViewTextBoxColumn.Name = "apellidoPaternoDataGridViewTextBoxColumn";
-            // 
-            // apellidoMaternoDataGridViewTextBoxColumn
-            // 
-            this.apellidoMaternoDataGridViewTextBoxColumn.DataPropertyName = "ApellidoMaterno";
-            this.apellidoMaternoDataGridViewTextBoxColumn.HeaderText = "ApellidoMaterno";
-            this.apellidoMaternoDataGridViewTextBoxColumn.Name = "apellidoMaternoDataGridViewTextBoxColumn";
-            // 
-            // teléfonoDataGridViewTextBoxColumn
-            // 
-            this.teléfonoDataGridViewTextBoxColumn.DataPropertyName = "Teléfono";
-            this.teléfonoDataGridViewTextBoxColumn.HeaderText = "Teléfono";
-            this.teléfonoDataGridViewTextBoxColumn.Name = "teléfonoDataGridViewTextBoxColumn";
-            // 
-            // sp_ClientesSelectAllBindingSource
-            // 
-            this.sp_ClientesSelectAllBindingSource.DataMember = "Sp_ClientesSelectAll";
-            this.sp_ClientesSelectAllBindingSource.DataSource = this.puntoDeVentaDataSet;
-            // 
-            // puntoDeVentaDataSet
-            // 
-            this.puntoDeVentaDataSet.DataSetName = "PuntoDeVentaDataSet";
-            this.puntoDeVentaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sp_ClientesSelectBindingSource
-            // 
-            this.sp_ClientesSelectBindingSource.DataMember = "Sp_ClientesSelect";
-            this.sp_ClientesSelectBindingSource.DataSource = this.puntoDeVentaDataSet;
-            // 
-            // sp_ClientesSelectTableAdapter
-            // 
-            this.sp_ClientesSelectTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.UpdateOrder = Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // btnBuscarId
-            // 
-            this.btnBuscarId.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnBuscarId.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.idClienteToolStripLabel,
-            this.tbBuscarId,
-            this.toolStripButton1,
-            this.btnBorrarBusqueda});
-            this.btnBuscarId.Location = new System.Drawing.Point(0, 438);
-            this.btnBuscarId.Name = "btnBuscarId";
-            this.btnBuscarId.Size = new System.Drawing.Size(1081, 25);
-            this.btnBuscarId.TabIndex = 21;
-            this.btnBuscarId.Text = "fillToolStrip";
-            this.btnBuscarId.Click += new System.EventHandler(this.fillToolStrip_Click);
-            // 
-            // idClienteToolStripLabel
-            // 
-            this.idClienteToolStripLabel.Name = "idClienteToolStripLabel";
-            this.idClienteToolStripLabel.Size = new System.Drawing.Size(57, 22);
-            this.idClienteToolStripLabel.Text = "IdCliente:";
-            // 
-            // tbBuscarId
-            // 
-            this.tbBuscarId.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tbBuscarId.Name = "tbBuscarId";
-            this.tbBuscarId.Size = new System.Drawing.Size(100, 25);
             // 
             // sp_ClientesSelectAllTableAdapter
             // 
@@ -444,20 +365,53 @@
             this.rdNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.rdNuevo.UseVisualStyleBackColor = false;
             // 
-            // btnBorrarBusqueda
+            // idClienteDataGridViewTextBoxColumn
             // 
-            this.btnBorrarBusqueda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnBorrarBusqueda.Name = "btnBorrarBusqueda";
-            this.btnBorrarBusqueda.Size = new System.Drawing.Size(43, 22);
-            this.btnBorrarBusqueda.Text = "Borrar";
-            this.btnBorrarBusqueda.Click += new System.EventHandler(this.btnBorrarBusqueda_Click);
+            this.idClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idClienteDataGridViewTextBoxColumn.DataPropertyName = "IdCliente";
+            this.idClienteDataGridViewTextBoxColumn.HeaderText = "IdCliente";
+            this.idClienteDataGridViewTextBoxColumn.Name = "idClienteDataGridViewTextBoxColumn";
+            this.idClienteDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // toolStripButton1
+            // idCliente1DataGridViewTextBoxColumn
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(46, 22);
-            this.toolStripButton1.Text = "Buscar";
+            this.idCliente1DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idCliente1DataGridViewTextBoxColumn.DataPropertyName = "IdCliente1";
+            this.idCliente1DataGridViewTextBoxColumn.HeaderText = "IdCliente1";
+            this.idCliente1DataGridViewTextBoxColumn.Name = "idCliente1DataGridViewTextBoxColumn";
+            this.idCliente1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // apellidoPaternoDataGridViewTextBoxColumn
+            // 
+            this.apellidoPaternoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apellidoPaternoDataGridViewTextBoxColumn.DataPropertyName = "ApellidoPaterno";
+            this.apellidoPaternoDataGridViewTextBoxColumn.HeaderText = "ApellidoPaterno";
+            this.apellidoPaternoDataGridViewTextBoxColumn.Name = "apellidoPaternoDataGridViewTextBoxColumn";
+            this.apellidoPaternoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // apellidoMaternoDataGridViewTextBoxColumn
+            // 
+            this.apellidoMaternoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apellidoMaternoDataGridViewTextBoxColumn.DataPropertyName = "ApellidoMaterno";
+            this.apellidoMaternoDataGridViewTextBoxColumn.HeaderText = "ApellidoMaterno";
+            this.apellidoMaternoDataGridViewTextBoxColumn.Name = "apellidoMaternoDataGridViewTextBoxColumn";
+            this.apellidoMaternoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // teléfonoDataGridViewTextBoxColumn
+            // 
+            this.teléfonoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.teléfonoDataGridViewTextBoxColumn.DataPropertyName = "Teléfono";
+            this.teléfonoDataGridViewTextBoxColumn.HeaderText = "Teléfono";
+            this.teléfonoDataGridViewTextBoxColumn.Name = "teléfonoDataGridViewTextBoxColumn";
+            this.teléfonoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // formClientes
             // 
@@ -465,7 +419,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 749);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.btnBuscarId);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.gbClientes);
             this.Name = "formClientes";
@@ -473,15 +426,11 @@
             this.Load += new System.EventHandler(this.formClientes_Load);
             this.gbClientes.ResumeLayout(false);
             this.gbClientes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectAllBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectBindingSource)).EndInit();
-            this.btnBuscarId.ResumeLayout(false);
-            this.btnBuscarId.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -504,12 +453,6 @@
         private System.Windows.Forms.Label lblFechaNac;
         private System.Windows.Forms.DataGridView dataGridView1;
         private PuntoDeVentaDataSet puntoDeVentaDataSet;
-        private System.Windows.Forms.BindingSource sp_ClientesSelectBindingSource;
-        private PuntoDeVentaDataSetTableAdapters.Sp_ClientesSelectTableAdapter sp_ClientesSelectTableAdapter;
-        private PuntoDeVentaDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.ToolStrip btnBuscarId;
-        private System.Windows.Forms.ToolStripLabel idClienteToolStripLabel;
-        private System.Windows.Forms.ToolStripTextBox tbBuscarId;
         private System.Windows.Forms.BindingSource sp_ClientesSelectAllBindingSource;
         private PuntoDeVentaDataSetTableAdapters.Sp_ClientesSelectAllTableAdapter sp_ClientesSelectAllTableAdapter;
         private System.Windows.Forms.Panel panel2;
@@ -517,15 +460,13 @@
         private System.Windows.Forms.RadioButton rdBorrar;
         private System.Windows.Forms.RadioButton rdActualizar;
         private System.Windows.Forms.RadioButton rdNuevo;
+        private System.Windows.Forms.Button btnGuardar;
+        private PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter queriesTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idClienteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idCliente1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaternoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaternoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn teléfonoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnGuardar;
-        private PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter queriesTableAdapter1;
-        private System.Windows.Forms.ToolStripButton btnBorrarBusqueda;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
