@@ -9,6 +9,20 @@ namespace Punto_de_venta
             InitializeComponent();
         }
 
+        private void btnAceptar_Click(object sender, System.EventArgs e)
+        {
+            if (tbUsuario.Text == "admin" && tbPassword.Text == "123")
+            {
+                Principal Principal1 = new Principal();
+                Principal1.Show();
+                this.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Usuario o Contraseña incorrecta");
+                tbPassword.Text = "";
 
+            }
+        }
     }
 }

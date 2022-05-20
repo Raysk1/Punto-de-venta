@@ -24,13 +24,15 @@ namespace Punto_de_venta
             if (rdNuevo.Checked)
             {
                 //peticion de un sp a la base de datos para insertar un nuevo cliente
-                queriesTableAdapter1.Sp_ClientesInsert(Convert.ToInt32(tbIdCliente.Text), tbNombre.Text, tbApPaterno.Text, tbApMaterno.Text, tbTelefono.Text);
+                queriesTableAdapter1.Sp_ClientesInsert(tbNombre.Text, tbApPaterno.Text, tbApMaterno.Text, tbTelefono.Text,
+                    cbSexo.Text, dtpFecNacimiento.Value);
             }
             //si el rd esta seleccionado para actualizar aplica un Update
             else if (rdActualizar.Checked)
             {
                 //peticion de un sp a la base de datos para actualizar un nuevo cliente
-                queriesTableAdapter1.Sp_ClientesUpdate(Convert.ToInt32(tbIdCliente.Text), tbNombre.Text, tbApPaterno.Text, tbApMaterno.Text, tbTelefono.Text);
+                queriesTableAdapter1.Sp_ClientesUpdate(tbNombre.Text, tbApPaterno.Text, tbApMaterno.Text, tbTelefono.Text,
+                    cbSexo.Text, dtpFecNacimiento.Value);
             }
 
             sp_ClientesSelectAllTableAdapter.Fill(puntoDeVentaDataSet.Sp_ClientesSelectAll);

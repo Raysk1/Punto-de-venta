@@ -47,15 +47,17 @@
             // 
             this.tbPassword.Location = new System.Drawing.Point(233, 158);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(272, 20);
-            this.tbPassword.TabIndex = 2;
+            this.tbPassword.TabIndex = 1;
             // 
             // tbUsuario
             // 
             this.tbUsuario.Location = new System.Drawing.Point(233, 108);
+            this.tbUsuario.MaxLength = 30;
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(272, 20);
-            this.tbUsuario.TabIndex = 3;
+            this.tbUsuario.TabIndex = 0;
             // 
             // lblLogin
             // 
@@ -90,9 +92,10 @@
             this.btnAceptar.Location = new System.Drawing.Point(430, 194);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 7;
+            this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // pLogin
             // 
