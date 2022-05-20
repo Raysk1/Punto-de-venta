@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelDatos = new System.Windows.Forms.Panel();
-            this.gbBotones = new System.Windows.Forms.GroupBox();
-            this.btnBorrar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.gbEmpleados = new System.Windows.Forms.GroupBox();
             this.tbIdEmpleado = new System.Windows.Forms.TextBox();
             this.sp_EmpleadosSelectAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -61,6 +58,9 @@
             this.rdBorrar = new System.Windows.Forms.RadioButton();
             this.rdActualizar = new System.Windows.Forms.RadioButton();
             this.rdNuevo = new System.Windows.Forms.RadioButton();
+            this.gbBotones = new System.Windows.Forms.GroupBox();
+            this.btnBorrar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.idEmpleadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,59 +75,26 @@
             this.queriesTableAdapter1 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter();
             this.sp_EmpleadosSelectAllTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_EmpleadosSelectAllTableAdapter();
             this.panelDatos.SuspendLayout();
-            this.gbBotones.SuspendLayout();
             this.gbEmpleados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sp_EmpleadosSelectAllBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.panel2.SuspendLayout();
+            this.gbBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDatos
             // 
             this.panelDatos.BackColor = System.Drawing.SystemColors.Control;
-            this.panelDatos.Controls.Add(this.gbBotones);
             this.panelDatos.Controls.Add(this.gbEmpleados);
             this.panelDatos.Controls.Add(this.panel2);
+            this.panelDatos.Controls.Add(this.gbBotones);
             this.panelDatos.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelDatos.Location = new System.Drawing.Point(0, 0);
             this.panelDatos.Name = "panelDatos";
             this.panelDatos.Size = new System.Drawing.Size(1081, 413);
             this.panelDatos.TabIndex = 0;
-            // 
-            // gbBotones
-            // 
-            this.gbBotones.Controls.Add(this.btnBorrar);
-            this.gbBotones.Controls.Add(this.btnGuardar);
-            this.gbBotones.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbBotones.Location = new System.Drawing.Point(0, 346);
-            this.gbBotones.Name = "gbBotones";
-            this.gbBotones.Size = new System.Drawing.Size(1081, 67);
-            this.gbBotones.TabIndex = 29;
-            this.gbBotones.TabStop = false;
-            // 
-            // btnBorrar
-            // 
-            this.btnBorrar.Enabled = false;
-            this.btnBorrar.Location = new System.Drawing.Point(581, 22);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(75, 23);
-            this.btnBorrar.TabIndex = 12;
-            this.btnBorrar.Text = "Borrar";
-            this.btnBorrar.UseVisualStyleBackColor = true;
-            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Enabled = false;
-            this.btnGuardar.Location = new System.Drawing.Point(404, 22);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 11;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // gbEmpleados
             // 
@@ -151,7 +118,7 @@
             this.gbEmpleados.Controls.Add(this.lblFechaNac);
             this.gbEmpleados.Controls.Add(this.lblFecContratacion);
             this.gbEmpleados.Controls.Add(this.lblApMaterno);
-            this.gbEmpleados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbEmpleados.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbEmpleados.Enabled = false;
             this.gbEmpleados.Location = new System.Drawing.Point(0, 96);
             this.gbEmpleados.Margin = new System.Windows.Forms.Padding(10, 6, 0, 6);
@@ -202,6 +169,7 @@
             this.tbApPaterno.Name = "tbApPaterno";
             this.tbApPaterno.Size = new System.Drawing.Size(194, 22);
             this.tbApPaterno.TabIndex = 3;
+            this.tbApPaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloLetras_KeyPress);
             // 
             // cbSexo
             // 
@@ -272,6 +240,7 @@
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(194, 22);
             this.tbNombre.TabIndex = 2;
+            this.tbNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloLetras_KeyPress);
             // 
             // tbApMaterno
             // 
@@ -283,6 +252,7 @@
             this.tbApMaterno.Name = "tbApMaterno";
             this.tbApMaterno.Size = new System.Drawing.Size(194, 22);
             this.tbApMaterno.TabIndex = 4;
+            this.tbApMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloLetras_KeyPress);
             // 
             // tbTelefono
             // 
@@ -294,7 +264,7 @@
             this.tbTelefono.Name = "tbTelefono";
             this.tbTelefono.Size = new System.Drawing.Size(194, 22);
             this.tbTelefono.TabIndex = 8;
-            this.tbTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTelefono_KeyPress);
+            this.tbTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros_KeyPress);
             // 
             // tbNotas
             // 
@@ -400,7 +370,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1081, 96);
-            this.panel2.TabIndex = 21;
+            this.panel2.TabIndex = 30;
             // 
             // rdInfo
             // 
@@ -495,6 +465,39 @@
             this.rdNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.rdNuevo.UseVisualStyleBackColor = false;
             this.rdNuevo.CheckedChanged += new System.EventHandler(this.rdNuevo_CheckedChanged);
+            // 
+            // gbBotones
+            // 
+            this.gbBotones.Controls.Add(this.btnBorrar);
+            this.gbBotones.Controls.Add(this.btnGuardar);
+            this.gbBotones.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gbBotones.Location = new System.Drawing.Point(0, 346);
+            this.gbBotones.Name = "gbBotones";
+            this.gbBotones.Size = new System.Drawing.Size(1081, 67);
+            this.gbBotones.TabIndex = 29;
+            this.gbBotones.TabStop = false;
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Enabled = false;
+            this.btnBorrar.Location = new System.Drawing.Point(581, 22);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(75, 23);
+            this.btnBorrar.TabIndex = 12;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Enabled = false;
+            this.btnGuardar.Location = new System.Drawing.Point(404, 22);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 11;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // dataGridView
             // 
@@ -618,13 +621,13 @@
             this.Text = "formEmpleados";
             this.Load += new System.EventHandler(this.formEmpleados_Load);
             this.panelDatos.ResumeLayout(false);
-            this.gbBotones.ResumeLayout(false);
             this.gbEmpleados.ResumeLayout(false);
             this.gbEmpleados.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sp_EmpleadosSelectAllBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.gbBotones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -633,10 +636,6 @@
         #endregion
         private PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter queriesTableAdapter1;
         private System.Windows.Forms.Panel panelDatos;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton rdBorrar;
-        private System.Windows.Forms.RadioButton rdActualizar;
-        private System.Windows.Forms.RadioButton rdNuevo;
         private PuntoDeVentaDataSet puntoDeVentaDataSet;
         private PuntoDeVentaDataSetTableAdapters.Sp_EmpleadosSelectAllTableAdapter sp_EmpleadosSelectAllTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView;
@@ -659,7 +658,6 @@
         private System.Windows.Forms.Label lblFechaNac;
         private System.Windows.Forms.Label lblFecContratacion;
         private System.Windows.Forms.Label lblApMaterno;
-        private System.Windows.Forms.RadioButton rdInfo;
         private System.Windows.Forms.TextBox tbIdEmpleado;
         private System.Windows.Forms.Label lblIdEmpleado;
         private System.Windows.Forms.BindingSource sp_EmpleadosSelectAllBindingSource;
@@ -676,5 +674,10 @@
         private System.Windows.Forms.GroupBox gbBotones;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton rdInfo;
+        private System.Windows.Forms.RadioButton rdBorrar;
+        private System.Windows.Forms.RadioButton rdActualizar;
+        private System.Windows.Forms.RadioButton rdNuevo;
     }
 }

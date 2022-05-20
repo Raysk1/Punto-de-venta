@@ -7,10 +7,12 @@ namespace Punto_de_venta
     public partial class Principal : Form
     {
         formEmpleados empleados;
+        formClientes clientes;
         public Principal()
         {
             InitializeComponent();
             empleados = new formEmpleados();
+            clientes = new formClientes();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -106,6 +108,11 @@ namespace Punto_de_venta
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(empleados);
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(clientes);
         }
     }
 }

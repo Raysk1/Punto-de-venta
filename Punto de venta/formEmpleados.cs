@@ -19,11 +19,14 @@ namespace Punto_de_venta
                 //si el rd esta seleccionado para nuevo se aplica un insert
                 if (rdNuevo.Checked)
                 {
-                    //se transforma la imagen en un array de bits para su posterior insercion en la base de datos y controla los nulos
+                    //se transforma la imagen en un array de byts para su posterior insercion en la base de datos y controla los nulos
                     byte[] image = pbFoto.Image == null ? null : Utilidades.imageToByteArray(pbFoto.Image, pbFoto.Image.RawFormat);
                     //peticion de un sp a la base de datos para insertar un nuevo cliente
-                    queriesTableAdapter1.Sp_EmpleadosInsert(tbApPaterno.Text, tbApMaterno.Text, tbNombre.Text, dtpFecNacimiento.Value,
-                        dtpFecContratacion.Value, tbTelefono.Text, image, tbNotas.Text, cbSexo.Text);
+                    queriesTableAdapter1.Sp_EmpleadosInsert(tbApPaterno.Text.TrimEnd(' '), tbApMaterno.Text.TrimEnd(' '), 
+                        tbNombre.Text.TrimEnd(' '),dtpFecNacimiento.Value,dtpFecContratacion.Value, 
+                        tbTelefono.Text.TrimEnd(' '), image, tbNotas.Text.TrimEnd(' '), cbSexo.Text.TrimEnd(' '));
+
+                    //lanza un mensaje de confirmacion
                     MessageBox.Show("Guardado Con Exito", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 //si el rd esta seleccionado para actualizar aplica un Update
@@ -32,12 +35,16 @@ namespace Punto_de_venta
                     //se transforma la imagen en un array de bits para su posterior insercion en la base de datos y controla los nulos
                     byte[] image = pbFoto.Image == null ? null : Utilidades.imageToByteArray(pbFoto.Image, pbFoto.Image.RawFormat);
                     //peticion de un sp a la base de datos para actualizar un nuevo cliente
-                    queriesTableAdapter1.Sp_EmpleadosUpdate(Convert.ToInt32(tbIdEmpleado.Text), tbApPaterno.Text, tbApMaterno.Text, tbNombre.Text, dtpFecNacimiento.Value,
-                        dtpFecContratacion.Value, tbTelefono.Text, image, tbNotas.Text, cbSexo.Text);
+                    queriesTableAdapter1.Sp_EmpleadosUpdate(Convert.ToInt32(tbIdEmpleado.Text), tbApPaterno.Text.TrimEnd(' '), 
+                        tbApMaterno.Text.TrimEnd(' '),tbNombre.Text.TrimEnd(' '), dtpFecNacimiento.Value, dtpFecContratacion.Value,
+                        tbTelefono.Text.TrimEnd(' '), image, tbNotas.Text.TrimEnd(' '), cbSexo.Text.TrimEnd(' '));
+
+                    //lanza un mensaje de confirmacion
                     MessageBox.Show("Actualizado Con Exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 //actualiza los datos
                 sp_EmpleadosSelectAllTableAdapter.Fill(puntoDeVentaDataSet.Sp_EmpleadosSelectAll);
+                dataGridView.CurrentCell = dataGridView.Rows[dataGridView.Rows.Count - 1].Cells[0];
             }
             else
             {
@@ -87,17 +94,22 @@ namespace Punto_de_venta
         {
             if (rdNuevo.Checked)
             {
+                //quita la imagen del picturebox
+                pbFoto.Image = null;
+               
                 //borra todo los campos de los textbox
                 foreach (Control item in gbEmpleados.Controls)
                 {
-                    item.Text = item.GetType() == typeof(TextBox) ? String.Empty : item.Text;
+                    item.Text = item.GetType() == typeof(TextBox) ? String.Empty : item.Text = item.Text;
                 }
+
                 btnGuardar.Enabled = rdNuevo.Checked;
             }
             else
             {
                 sp_EmpleadosSelectAllTableAdapter.Fill(puntoDeVentaDataSet.Sp_EmpleadosSelectAll);
             }
+            
 
             //vuelve activar el datagrid
             dataGridView.Enabled = !rdNuevo.Checked;
@@ -131,15 +143,17 @@ namespace Punto_de_venta
             return true;
         }
 
-        private void tbTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
             //esta linea hace que el textbox solo acepte numeros
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
         }
+
     }
 }

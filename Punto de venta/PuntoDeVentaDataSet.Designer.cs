@@ -26614,6 +26614,7 @@ namespace Punto_de_venta.PuntoDeVentaDataSetTableAdapters {
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).CommandText = "dbo.Sp_ClientesUpdate";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).CommandType = global::System.Data.CommandType.StoredProcedure;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdCliente", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.NVarChar, 40, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ApellidoPaterno", global::System.Data.SqlDbType.NVarChar, 40, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ApellidoMaterno", global::System.Data.SqlDbType.NVarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -27020,43 +27021,49 @@ namespace Punto_de_venta.PuntoDeVentaDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object Sp_ClientesUpdate(string Nombre, string ApellidoPaterno, string ApellidoMaterno, string Teléfono, string sexo, global::System.Nullable<global::System.DateTime> FechaDeNacimiento) {
+        public virtual object Sp_ClientesUpdate(global::System.Nullable<int> IdCliente, string Nombre, string ApellidoPaterno, string ApellidoMaterno, string Teléfono, string sexo, global::System.Nullable<global::System.DateTime> FechaDeNacimiento) {
             global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[3]));
-            if ((Nombre == null)) {
-                command.Parameters[1].Value = global::System.DBNull.Value;
+            if ((IdCliente.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(IdCliente.Value));
             }
             else {
-                command.Parameters[1].Value = ((string)(Nombre));
+                command.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((ApellidoPaterno == null)) {
+            if ((Nombre == null)) {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[2].Value = ((string)(ApellidoPaterno));
+                command.Parameters[2].Value = ((string)(Nombre));
             }
-            if ((ApellidoMaterno == null)) {
+            if ((ApellidoPaterno == null)) {
                 command.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[3].Value = ((string)(ApellidoMaterno));
+                command.Parameters[3].Value = ((string)(ApellidoPaterno));
             }
-            if ((Teléfono == null)) {
+            if ((ApellidoMaterno == null)) {
                 command.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[4].Value = ((string)(Teléfono));
+                command.Parameters[4].Value = ((string)(ApellidoMaterno));
             }
-            if ((sexo == null)) {
+            if ((Teléfono == null)) {
                 command.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[5].Value = ((string)(sexo));
+                command.Parameters[5].Value = ((string)(Teléfono));
             }
-            if ((FechaDeNacimiento.HasValue == true)) {
-                command.Parameters[6].Value = ((System.DateTime)(FechaDeNacimiento.Value));
+            if ((sexo == null)) {
+                command.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[6].Value = global::System.DBNull.Value;
+                command.Parameters[6].Value = ((string)(sexo));
+            }
+            if ((FechaDeNacimiento.HasValue == true)) {
+                command.Parameters[7].Value = ((System.DateTime)(FechaDeNacimiento.Value));
+            }
+            else {
+                command.Parameters[7].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
