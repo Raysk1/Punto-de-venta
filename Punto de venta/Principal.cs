@@ -7,11 +7,13 @@ namespace Punto_de_venta
     public partial class Principal : Form
     {
         formEmpleados empleados;
+        formProductos productos;
         formClientes clientes;
         public Principal()
         {
             InitializeComponent();
             empleados = new formEmpleados();
+            productos = new formProductos();
             clientes = new formClientes();
         }
 
@@ -75,10 +77,6 @@ namespace Punto_de_venta
             SubmenuReportes.Visible = false;
         }
 
-        private void btnsalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         private void AbrirFormEnPanel(object formhija)
         {
             if (this.panelContenedor.Controls.Count > 0)
@@ -93,13 +91,6 @@ namespace Punto_de_venta
 
         }
 
-
-
-        private void btnproductos_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btninicio_Click(object sender, EventArgs e)
         {
 
@@ -108,6 +99,21 @@ namespace Punto_de_venta
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(empleados);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(productos);
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(clientes);
         }
 
         private void btnClientes_Click(object sender, EventArgs e)

@@ -60,6 +60,12 @@
             this.rdActualizar = new System.Windows.Forms.RadioButton();
             this.rdNuevo = new System.Windows.Forms.RadioButton();
             this.queriesTableAdapter1 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter();
+            this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCliente1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoPaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellidoMaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teléfonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectAllBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
@@ -86,56 +92,62 @@
             this.gbClientes.Controls.Add(this.tbIdCliente);
             this.gbClientes.Location = new System.Drawing.Point(0, 96);
             this.gbClientes.Name = "gbClientes";
+            this.gbClientes.Size = new System.Drawing.Size(1081, 315);
             this.gbClientes.Size = new System.Drawing.Size(1081, 309);
             this.gbClientes.TabIndex = 19;
             this.gbClientes.TabStop = false;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(432, 240);
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnGuardar.Location = new System.Drawing.Point(650, 250);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 12;
+            this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // cbSexo
             // 
+            this.cbSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbSexo.FormattingEnabled = true;
             this.cbSexo.Items.AddRange(new object[] {
             "M",
             "H"});
-            this.cbSexo.Location = new System.Drawing.Point(134, 210);
+            this.cbSexo.Location = new System.Drawing.Point(574, 122);
             this.cbSexo.Name = "cbSexo";
-            this.cbSexo.Size = new System.Drawing.Size(200, 21);
-            this.cbSexo.TabIndex = 32;
+            this.cbSexo.Size = new System.Drawing.Size(200, 24);
+            this.cbSexo.TabIndex = 5;
             this.cbSexo.Text = "Seleccionar";
             // 
             // lblSexo
             // 
             this.lblSexo.AutoSize = true;
-            this.lblSexo.Location = new System.Drawing.Point(93, 213);
+            this.lblSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblSexo.Location = new System.Drawing.Point(491, 125);
             this.lblSexo.Name = "lblSexo";
-            this.lblSexo.Size = new System.Drawing.Size(34, 13);
+            this.lblSexo.Size = new System.Drawing.Size(43, 17);
             this.lblSexo.TabIndex = 31;
             this.lblSexo.Text = "Sexo:";
             // 
             // dtpFecNacimiento
             // 
-            this.dtpFecNacimiento.Location = new System.Drawing.Point(134, 242);
+            this.dtpFecNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.dtpFecNacimiento.Location = new System.Drawing.Point(574, 164);
             this.dtpFecNacimiento.Name = "dtpFecNacimiento";
-            this.dtpFecNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.dtpFecNacimiento.TabIndex = 23;
+            this.dtpFecNacimiento.Size = new System.Drawing.Size(200, 23);
+            this.dtpFecNacimiento.TabIndex = 6;
             // 
             // tbNombre
             // 
             this.tbNombre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "Nombre", true));
-            this.tbNombre.Location = new System.Drawing.Point(134, 80);
+            this.tbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tbNombre.Location = new System.Drawing.Point(171, 88);
             this.tbNombre.MaxLength = 30;
             this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(200, 20);
-            this.tbNombre.TabIndex = 22;
+            this.tbNombre.Size = new System.Drawing.Size(200, 23);
+            this.tbNombre.TabIndex = 1;
             // 
             // sp_ClientesSelectAllBindingSource
             // 
@@ -150,90 +162,100 @@
             // tbApPaterno
             // 
             this.tbApPaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "ApellidoPaterno", true));
-            this.tbApPaterno.Location = new System.Drawing.Point(134, 112);
+            this.tbApPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tbApPaterno.Location = new System.Drawing.Point(171, 126);
             this.tbApPaterno.MaxLength = 30;
             this.tbApPaterno.Name = "tbApPaterno";
-            this.tbApPaterno.Size = new System.Drawing.Size(200, 20);
-            this.tbApPaterno.TabIndex = 21;
+            this.tbApPaterno.Size = new System.Drawing.Size(200, 23);
+            this.tbApPaterno.TabIndex = 2;
             // 
             // tbApMaterno
             // 
             this.tbApMaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "ApellidoMaterno", true));
-            this.tbApMaterno.Location = new System.Drawing.Point(134, 144);
+            this.tbApMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tbApMaterno.Location = new System.Drawing.Point(171, 167);
             this.tbApMaterno.MaxLength = 30;
             this.tbApMaterno.Name = "tbApMaterno";
-            this.tbApMaterno.Size = new System.Drawing.Size(200, 20);
-            this.tbApMaterno.TabIndex = 20;
+            this.tbApMaterno.Size = new System.Drawing.Size(200, 23);
+            this.tbApMaterno.TabIndex = 3;
             // 
             // tbTelefono
             // 
             this.tbTelefono.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "Teléfono", true));
-            this.tbTelefono.Location = new System.Drawing.Point(134, 175);
+            this.tbTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tbTelefono.Location = new System.Drawing.Point(574, 76);
             this.tbTelefono.MaxLength = 10;
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(200, 20);
-            this.tbTelefono.TabIndex = 16;
+            this.tbTelefono.Size = new System.Drawing.Size(200, 23);
+            this.tbTelefono.TabIndex = 4;
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(81, 83);
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblNombre.Location = new System.Drawing.Point(81, 91);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(47, 13);
+            this.lblNombre.Size = new System.Drawing.Size(62, 17);
             this.lblNombre.TabIndex = 11;
             this.lblNombre.Text = "Nombre:";
             // 
             // lblApPaterno
             // 
             this.lblApPaterno.AutoSize = true;
-            this.lblApPaterno.Location = new System.Drawing.Point(41, 115);
+            this.lblApPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblApPaterno.Location = new System.Drawing.Point(41, 129);
             this.lblApPaterno.Name = "lblApPaterno";
-            this.lblApPaterno.Size = new System.Drawing.Size(87, 13);
+            this.lblApPaterno.Size = new System.Drawing.Size(116, 17);
             this.lblApPaterno.TabIndex = 10;
             this.lblApPaterno.Text = "Apellido Paterno:";
             // 
             // lblTelefono
             // 
             this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(76, 178);
+            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblTelefono.Location = new System.Drawing.Point(466, 79);
             this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(52, 13);
+            this.lblTelefono.Size = new System.Drawing.Size(68, 17);
             this.lblTelefono.TabIndex = 7;
             this.lblTelefono.Text = "Telefono:";
             // 
             // lblFechaNac
             // 
             this.lblFechaNac.AutoSize = true;
-            this.lblFechaNac.Location = new System.Drawing.Point(32, 245);
+            this.lblFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblFechaNac.Location = new System.Drawing.Point(409, 169);
             this.lblFechaNac.Name = "lblFechaNac";
-            this.lblFechaNac.Size = new System.Drawing.Size(96, 13);
+            this.lblFechaNac.Size = new System.Drawing.Size(125, 17);
             this.lblFechaNac.TabIndex = 4;
             this.lblFechaNac.Text = "Fecha Nacimiento:";
             // 
             // lblApMaterno
             // 
             this.lblApMaterno.AutoSize = true;
-            this.lblApMaterno.Location = new System.Drawing.Point(39, 147);
+            this.lblApMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblApMaterno.Location = new System.Drawing.Point(39, 170);
             this.lblApMaterno.Name = "lblApMaterno";
-            this.lblApMaterno.Size = new System.Drawing.Size(89, 13);
+            this.lblApMaterno.Size = new System.Drawing.Size(118, 17);
             this.lblApMaterno.TabIndex = 2;
             this.lblApMaterno.Text = "Apellido Materno:";
             // 
             // lblIdCliente
             // 
             this.lblIdCliente.AutoSize = true;
+            this.lblIdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lblIdCliente.Location = new System.Drawing.Point(72, 52);
             this.lblIdCliente.Name = "lblIdCliente";
-            this.lblIdCliente.Size = new System.Drawing.Size(56, 13);
+            this.lblIdCliente.Size = new System.Drawing.Size(72, 17);
             this.lblIdCliente.TabIndex = 1;
             this.lblIdCliente.Text = "ID Cliente:";
             // 
             // tbIdCliente
             // 
             this.tbIdCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectAllBindingSource, "IdCliente", true));
-            this.tbIdCliente.Location = new System.Drawing.Point(134, 49);
+            this.tbIdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tbIdCliente.Location = new System.Drawing.Point(171, 49);
             this.tbIdCliente.Name = "tbIdCliente";
-            this.tbIdCliente.Size = new System.Drawing.Size(200, 20);
+            this.tbIdCliente.Size = new System.Drawing.Size(200, 23);
             this.tbIdCliente.TabIndex = 0;
             // 
             // dataGridView1
@@ -309,7 +331,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1081, 96);
+            this.panel2.Size = new System.Drawing.Size(1081, 94);
             this.panel2.TabIndex = 22;
             // 
             // rdInfo
@@ -328,7 +350,7 @@
             this.rdInfo.Location = new System.Drawing.Point(812, 0);
             this.rdInfo.Margin = new System.Windows.Forms.Padding(0);
             this.rdInfo.Name = "rdInfo";
-            this.rdInfo.Size = new System.Drawing.Size(270, 96);
+            this.rdInfo.Size = new System.Drawing.Size(238, 94);
             this.rdInfo.TabIndex = 11;
             this.rdInfo.TabStop = true;
             this.rdInfo.Text = "Informacion";
@@ -352,7 +374,7 @@
             this.rdBorrar.Location = new System.Drawing.Point(541, 0);
             this.rdBorrar.Margin = new System.Windows.Forms.Padding(0);
             this.rdBorrar.Name = "rdBorrar";
-            this.rdBorrar.Size = new System.Drawing.Size(271, 96);
+            this.rdBorrar.Size = new System.Drawing.Size(271, 94);
             this.rdBorrar.TabIndex = 10;
             this.rdBorrar.Text = "Borrar";
             this.rdBorrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -375,7 +397,7 @@
             this.rdActualizar.Location = new System.Drawing.Point(270, 0);
             this.rdActualizar.Margin = new System.Windows.Forms.Padding(0);
             this.rdActualizar.Name = "rdActualizar";
-            this.rdActualizar.Size = new System.Drawing.Size(271, 96);
+            this.rdActualizar.Size = new System.Drawing.Size(271, 94);
             this.rdActualizar.TabIndex = 9;
             this.rdActualizar.Text = "Actualizar";
             this.rdActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -398,13 +420,61 @@
             this.rdNuevo.Location = new System.Drawing.Point(0, 0);
             this.rdNuevo.Margin = new System.Windows.Forms.Padding(0);
             this.rdNuevo.Name = "rdNuevo";
-            this.rdNuevo.Size = new System.Drawing.Size(270, 96);
+            this.rdNuevo.Size = new System.Drawing.Size(270, 94);
             this.rdNuevo.TabIndex = 8;
             this.rdNuevo.Text = "Nuevo";
             this.rdNuevo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.rdNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.rdNuevo.UseVisualStyleBackColor = false;
+            // 
             this.rdNuevo.CheckedChanged += new System.EventHandler(this.rdNuevo_CheckedChanged);
+            // 
+            // 
+            this.idClienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idClienteDataGridViewTextBoxColumn.DataPropertyName = "IdCliente";
+            this.idClienteDataGridViewTextBoxColumn.HeaderText = "IdCliente";
+            this.idClienteDataGridViewTextBoxColumn.Name = "idClienteDataGridViewTextBoxColumn";
+            this.idClienteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idCliente1DataGridViewTextBoxColumn
+            // 
+            this.idCliente1DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idCliente1DataGridViewTextBoxColumn.DataPropertyName = "IdCliente1";
+            this.idCliente1DataGridViewTextBoxColumn.HeaderText = "IdCliente1";
+            this.idCliente1DataGridViewTextBoxColumn.Name = "idCliente1DataGridViewTextBoxColumn";
+            this.idCliente1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // apellidoPaternoDataGridViewTextBoxColumn
+            // 
+            this.apellidoPaternoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apellidoPaternoDataGridViewTextBoxColumn.DataPropertyName = "ApellidoPaterno";
+            this.apellidoPaternoDataGridViewTextBoxColumn.HeaderText = "ApellidoPaterno";
+            this.apellidoPaternoDataGridViewTextBoxColumn.Name = "apellidoPaternoDataGridViewTextBoxColumn";
+            this.apellidoPaternoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // apellidoMaternoDataGridViewTextBoxColumn
+            // 
+            this.apellidoMaternoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.apellidoMaternoDataGridViewTextBoxColumn.DataPropertyName = "ApellidoMaterno";
+            this.apellidoMaternoDataGridViewTextBoxColumn.HeaderText = "ApellidoMaterno";
+            this.apellidoMaternoDataGridViewTextBoxColumn.Name = "apellidoMaternoDataGridViewTextBoxColumn";
+            this.apellidoMaternoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // teléfonoDataGridViewTextBoxColumn
+            // 
+            this.teléfonoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.teléfonoDataGridViewTextBoxColumn.DataPropertyName = "Teléfono";
+            this.teléfonoDataGridViewTextBoxColumn.HeaderText = "Teléfono";
+            this.teléfonoDataGridViewTextBoxColumn.Name = "teléfonoDataGridViewTextBoxColumn";
+            this.teléfonoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // formClientes
             // 

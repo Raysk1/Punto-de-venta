@@ -189,9 +189,9 @@
             // btnAgregarFoto
             // 
             this.btnAgregarFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarFoto.Location = new System.Drawing.Point(780, 188);
+            this.btnAgregarFoto.Location = new System.Drawing.Point(792, 178);
             this.btnAgregarFoto.Name = "btnAgregarFoto";
-            this.btnAgregarFoto.Size = new System.Drawing.Size(176, 47);
+            this.btnAgregarFoto.Size = new System.Drawing.Size(150, 50);
             this.btnAgregarFoto.TabIndex = 10;
             this.btnAgregarFoto.Text = "Agregar Foto";
             this.btnAgregarFoto.UseVisualStyleBackColor = true;
@@ -202,9 +202,9 @@
             this.pbFoto.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.pbFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbFoto.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.sp_EmpleadosSelectAllBindingSource, "Foto", true));
-            this.pbFoto.Location = new System.Drawing.Point(780, 19);
+            this.pbFoto.Location = new System.Drawing.Point(792, 22);
             this.pbFoto.Name = "pbFoto";
-            this.pbFoto.Size = new System.Drawing.Size(176, 150);
+            this.pbFoto.Size = new System.Drawing.Size(150, 150);
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFoto.TabIndex = 25;
             this.pbFoto.TabStop = false;
