@@ -1,6 +1,6 @@
 ﻿namespace Punto_de_venta
 {
-    partial class formLogin
+    partial class FormLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formLogin));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.lblLogin = new System.Windows.Forms.Label();
@@ -39,8 +40,14 @@
             this.pbLogin = new System.Windows.Forms.PictureBox();
             this.lblSysPapeleria = new System.Windows.Forms.Label();
             this.lblNomPrograma = new System.Windows.Forms.Label();
+            this.puntoDeVentaDataSet = new Punto_de_venta.PuntoDeVentaDataSet();
+            this.loginBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.loginTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.loginTableAdapter();
+            this.tableAdapterManager = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager();
             this.pLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbPassword
@@ -62,10 +69,10 @@
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
-            this.lblLogin.Font = new System.Drawing.Font("News706 BT", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogin.Location = new System.Drawing.Point(226, 35);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(116, 42);
+            this.lblLogin.Size = new System.Drawing.Size(106, 39);
             this.lblLogin.TabIndex = 4;
             this.lblLogin.Text = "Login";
             // 
@@ -107,7 +114,7 @@
             this.pLogin.Controls.Add(this.tbUsuario);
             this.pLogin.Controls.Add(this.tbPassword);
             this.pLogin.Controls.Add(this.pbLogin);
-            this.pLogin.Location = new System.Drawing.Point(12, 163);
+            this.pLogin.Location = new System.Drawing.Point(85, 168);
             this.pLogin.Name = "pLogin";
             this.pLogin.Size = new System.Drawing.Size(533, 234);
             this.pLogin.TabIndex = 8;
@@ -127,11 +134,11 @@
             // 
             this.lblSysPapeleria.AutoSize = true;
             this.lblSysPapeleria.BackColor = System.Drawing.Color.Transparent;
-            this.lblSysPapeleria.Font = new System.Drawing.Font("Microsoft Uighur", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSysPapeleria.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSysPapeleria.ForeColor = System.Drawing.Color.Transparent;
-            this.lblSysPapeleria.Location = new System.Drawing.Point(416, 113);
+            this.lblSysPapeleria.Location = new System.Drawing.Point(348, 107);
             this.lblSysPapeleria.Name = "lblSysPapeleria";
-            this.lblSysPapeleria.Size = new System.Drawing.Size(129, 28);
+            this.lblSysPapeleria.Size = new System.Drawing.Size(270, 31);
             this.lblSysPapeleria.TabIndex = 9;
             this.lblSysPapeleria.Text = "Sistema de Papeleria";
             // 
@@ -141,27 +148,59 @@
             this.lblNomPrograma.BackColor = System.Drawing.Color.Transparent;
             this.lblNomPrograma.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomPrograma.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNomPrograma.Location = new System.Drawing.Point(119, 102);
+            this.lblNomPrograma.Location = new System.Drawing.Point(53, 102);
             this.lblNomPrograma.Name = "lblNomPrograma";
             this.lblNomPrograma.Size = new System.Drawing.Size(291, 36);
             this.lblNomPrograma.TabIndex = 11;
             this.lblNomPrograma.Text = "Nombre del Software  |";
             // 
-            // formLogin
+            // puntoDeVentaDataSet
+            // 
+            this.puntoDeVentaDataSet.DataSetName = "PuntoDeVentaDataSet";
+            this.puntoDeVentaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // loginBindingSource
+            // 
+            this.loginBindingSource.DataMember = "login";
+            this.loginBindingSource.DataSource = this.puntoDeVentaDataSet;
+            // 
+            // loginTableAdapter
+            // 
+            this.loginTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClientesTableAdapter = null;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.ControlUsuarioTableAdapter = null;
+            this.tableAdapterManager.DetallesPedidoTableAdapter = null;
+            this.tableAdapterManager.DetallesVentaTableAdapter = null;
+            this.tableAdapterManager.EmpleadosTableAdapter = null;
+            this.tableAdapterManager.NivelesTableAdapter = null;
+            this.tableAdapterManager.PedidoTableAdapter = null;
+            this.tableAdapterManager.ProductosTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.usuariosTableAdapter = null;
+            this.tableAdapterManager.VentaTableAdapter = null;
+            // 
+            // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Punto_de_venta.Properties.Resources.papeleria3;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.ClientSize = new System.Drawing.Size(703, 537);
             this.Controls.Add(this.lblSysPapeleria);
             this.Controls.Add(this.lblNomPrograma);
             this.Controls.Add(this.pLogin);
-            this.Name = "formLogin";
+            this.Name = "FormLogin";
             this.Text = "formLogin";
             this.pLogin.ResumeLayout(false);
             this.pLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,5 +218,9 @@
         private System.Windows.Forms.Panel pLogin;
         private System.Windows.Forms.Label lblSysPapeleria;
         private System.Windows.Forms.Label lblNomPrograma;
+        private PuntoDeVentaDataSet puntoDeVentaDataSet;
+        private System.Windows.Forms.BindingSource loginBindingSource;
+        private PuntoDeVentaDataSetTableAdapters.loginTableAdapter loginTableAdapter;
+        private PuntoDeVentaDataSetTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

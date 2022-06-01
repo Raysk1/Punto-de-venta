@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Punto_de_venta
 {
-    public partial class formEmpleados : Form
+    public partial class FormEmpleados : Form
     {
-        public formEmpleados()
+        public FormEmpleados()
         {
             InitializeComponent();
         }
@@ -14,42 +14,50 @@ namespace Punto_de_venta
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             //comprueba que los campos esten llenos
-            if (ComprobarCampos())
+            if (!Utilidades.ComprobarCampos(gbEmpleados.Controls))
             {
-                //si el rd esta seleccionado para nuevo se aplica un insert
-                if (rdNuevo.Checked)
-                {
-                    //se transforma la imagen en un array de byts para su posterior insercion en la base de datos y controla los nulos
-                    byte[] image = pbFoto.Image == null ? null : Utilidades.imageToByteArray(pbFoto.Image, pbFoto.Image.RawFormat);
-                    //peticion de un sp a la base de datos para insertar un nuevo cliente
-                    queriesTableAdapter1.Sp_EmpleadosInsert(tbApPaterno.Text.TrimEnd(' '), tbApMaterno.Text.TrimEnd(' '), 
-                        tbNombre.Text.TrimEnd(' '),dtpFecNacimiento.Value,dtpFecContratacion.Value, 
-                        tbTelefono.Text.TrimEnd(' '), image, tbNotas.Text.TrimEnd(' '), cbSexo.Text.TrimEnd(' '));
 
-                    //lanza un mensaje de confirmacion
-                    MessageBox.Show("Guardado Con Exito", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                //si el rd esta seleccionado para actualizar aplica un Update
-                else if (rdActualizar.Checked)
-                {
-                    //se transforma la imagen en un array de bits para su posterior insercion en la base de datos y controla los nulos
-                    byte[] image = pbFoto.Image == null ? null : Utilidades.imageToByteArray(pbFoto.Image, pbFoto.Image.RawFormat);
-                    //peticion de un sp a la base de datos para actualizar un nuevo cliente
-                    queriesTableAdapter1.Sp_EmpleadosUpdate(Convert.ToInt32(tbIdEmpleado.Text), tbApPaterno.Text.TrimEnd(' '), 
-                        tbApMaterno.Text.TrimEnd(' '),tbNombre.Text.TrimEnd(' '), dtpFecNacimiento.Value, dtpFecContratacion.Value,
-                        tbTelefono.Text.TrimEnd(' '), image, tbNotas.Text.TrimEnd(' '), cbSexo.Text.TrimEnd(' '));
-
-                    //lanza un mensaje de confirmacion
-                    MessageBox.Show("Actualizado Con Exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                //actualiza los datos
-                sp_EmpleadosSelectAllTableAdapter.Fill(puntoDeVentaDataSet.Sp_EmpleadosSelectAll);
-                dataGridView.CurrentCell = dataGridView.Rows[dataGridView.Rows.Count - 1].Cells[0];
-            }
-            else
-            {
                 //lanza un mensaje alertando llenar los campos
                 MessageBox.Show("Debe llenar todos los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            int filaActual = 0;
+            //se transforma la imagen en un array de bits para su posterior insercion en la base de datos y controla los nulos
+            byte[] image = pbFoto.Image == null ? null : Utilidades.imageToByteArray(pbFoto.Image, pbFoto.Image.RawFormat);
+            //si el rd esta seleccionado para nuevo se aplica un insert
+            if (rdNuevo.Checked)
+            {
+                //peticion de un sp a la base de datos para insertar un nuevo cliente
+                queriesTableAdapter1.Sp_EmpleadosInsert(tbApPaterno.Text.TrimEnd(' '), tbApMaterno.Text.TrimEnd(' '),
+                    tbNombre.Text.TrimEnd(' '), dtpFecNacimiento.Value, dtpFecContratacion.Value,
+                    tbTelefono.Text.TrimEnd(' '), image, tbNotas.Text.TrimEnd(' '), cbSexo.Text.TrimEnd(' '));
+
+                //actualiza los datos
+                filaActual = empleadosDataGridView.Rows.Count - 1;
+                this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
+                empleadosDataGridView.CurrentCell = empleadosDataGridView.Rows[filaActual].Cells[0];
+                Utilidades.LimpiarCampos(gbEmpleados.Controls);
+                tbIdEmpleado.Text = Utilidades.SiguienteID(queriesTableAdapter1, "Empleados");
+                //lanza un mensaje de confirmacion
+                MessageBox.Show("Guardado Con Exito", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            //si el rd esta seleccionado para actualizar aplica un Update
+            else if (rdActualizar.Checked)
+            {
+
+                //peticion de un sp a la base de datos para actualizar un nuevo cliente
+                queriesTableAdapter1.Sp_EmpleadosUpdate(Convert.ToInt32(tbIdEmpleado.Text), tbApPaterno.Text.TrimEnd(' '),
+                    tbApMaterno.Text.TrimEnd(' '), tbNombre.Text, dtpFecNacimiento.Value, dtpFecContratacion.Value,
+                    tbTelefono.Text.TrimEnd(' '), image, tbNotas.Text.TrimEnd(' '), cbSexo.Text.TrimEnd(' '));
+
+                //lanza un mensaje de confirmacion
+                MessageBox.Show("Actualizado Con Exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                filaActual = empleadosDataGridView.Rows.IndexOf(empleadosDataGridView.CurrentRow);
+                //actualiza los datos
+                this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
+                empleadosDataGridView.CurrentCell = empleadosDataGridView.Rows[filaActual].Cells[0];
             }
 
         }
@@ -58,7 +66,7 @@ namespace Punto_de_venta
         private void btnAgregarFoto_Click(object sender, EventArgs e)
         {
             //abre una ventana de busqueda de archivos,devuelve la imagen seleccionada y se le asigna al pbFoto
-            Image image = Utilidades.PickAImage();
+            Image image = Utilidades.ElegirImagen();
             if (image != null)
                 pbFoto.Image = image;
 
@@ -66,9 +74,11 @@ namespace Punto_de_venta
 
         private void formEmpleados_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'puntoDeVentaDataSet.Empleados' Puede moverla o quitarla según sea necesario.
+            this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
 
-            // TODO: esta línea de código carga datos en la tabla 'puntoDeVentaDataSet.Sp_EmpleadosSelectAll' Puede moverla o quitarla según sea necesario.
-            this.sp_EmpleadosSelectAllTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelectAll);
+
+
 
 
         }
@@ -87,7 +97,7 @@ namespace Punto_de_venta
             gbEmpleados.Enabled = !rdBorrar.Checked;
             btnGuardar.Enabled = !rdBorrar.Checked;
             btnBorrar.Enabled = rdBorrar.Checked;
-           
+
         }
 
         private void rdNuevo_CheckedChanged(object sender, EventArgs e)
@@ -96,30 +106,28 @@ namespace Punto_de_venta
             {
                 //quita la imagen del picturebox
                 pbFoto.Image = null;
-               
-                //borra todo los campos de los textbox
-                foreach (Control item in gbEmpleados.Controls)
-                {
-                    item.Text = item.GetType() == typeof(TextBox) ? String.Empty : item.Text = item.Text;
-                }
 
-                btnGuardar.Enabled = rdNuevo.Checked;
+                //borra todo los campos de los textbox
+                Utilidades.LimpiarCampos(gbEmpleados.Controls);
+                tbIdEmpleado.Text = Utilidades.SiguienteID(queriesTableAdapter1, "Empleados");
+
             }
             else
             {
-                sp_EmpleadosSelectAllTableAdapter.Fill(puntoDeVentaDataSet.Sp_EmpleadosSelectAll);
+                this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
             }
-            
+
 
             //vuelve activar el datagrid
-            dataGridView.Enabled = !rdNuevo.Checked;
+            empleadosDataGridView.Enabled = !rdNuevo.Checked;
+            btnGuardar.Enabled = rdNuevo.Checked;
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             //ejecuta un delete y actualiza el datagrid
             queriesTableAdapter1.Sp_EmpleadosDelete(Convert.ToInt32(tbIdEmpleado.Text));
-            sp_EmpleadosSelectAllTableAdapter.Fill(puntoDeVentaDataSet.Sp_EmpleadosSelectAll);
+            this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
             MessageBox.Show("Borrado Con Exito", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -129,19 +137,8 @@ namespace Punto_de_venta
             btnGuardar.Enabled = rdActualizar.Checked;
         }
 
-        //comprueba que los campos esten llenos
-        private bool ComprobarCampos()
-        {
-            foreach (Control control in gbEmpleados.Controls)
-            {
-                if(control.Text == string.Empty && (control.GetType() == typeof(TextBox) | 
-                    control.GetType() == typeof(ComboBox)) && control != tbIdEmpleado)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+
+
 
         private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -151,9 +148,8 @@ namespace Punto_de_venta
 
         private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
         }
-
     }
 }

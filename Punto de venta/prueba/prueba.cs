@@ -16,7 +16,7 @@ namespace Punto_de_venta.prueba
         {
 
             //generar busqueda y actualizar datagrid
-            sp_EmpleadosSelectAllDataGridView.DataSource = sp_EmpleadosSelectBindingSource;
+
 
             Form f = new prueba();
 
@@ -48,17 +48,6 @@ namespace Punto_de_venta.prueba
 
 
 
-        private void fillToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                this.sp_EmpleadosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelect, new System.Nullable<int>(((int)(System.Convert.ChangeType(idEmpleadoToolStripTextBox.Text, typeof(int))))));
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
 
-        }
     }
 }
