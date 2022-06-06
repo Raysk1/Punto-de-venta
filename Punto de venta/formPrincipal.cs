@@ -9,7 +9,7 @@ namespace Punto_de_venta
         FormEmpleados empleados;
         FormProductos productos;
         FormClientes clientes;
-        FormVentas ventas;
+        public FormVentas ventas;
         FormUsuarios usuarios;
         public FormPrincipal()
         {
@@ -48,6 +48,8 @@ namespace Punto_de_venta
         private void Form1_Load(object sender, EventArgs e)
         {
             btninicio_Click(null, e);
+            Utilidades.principal = this;
+
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -81,7 +83,7 @@ namespace Punto_de_venta
             SubmenuReportes.Visible = false;
         }
 
-        private void AbrirFormEnPanel(object formhija)
+        public void AbrirFormEnPanel(object formhija)
         {
             if (this.panelContenedor.Controls.Count > 0)
                 this.panelContenedor.Controls.RemoveAt(0);

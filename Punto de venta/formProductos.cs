@@ -6,6 +6,7 @@ namespace Punto_de_venta
 {
     public partial class FormProductos : Form
     {
+        int filaActual = 0;
         public FormProductos()
         {
             InitializeComponent();
@@ -14,7 +15,7 @@ namespace Punto_de_venta
         private void formProductos_Load(object sender, System.EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'puntoDeVentaDataSet.Productos' Puede moverla o quitarla según sea necesario.
-            this.productosTableAdapter.Fill(this.puntoDeVentaDataSet.Productos);
+            this.sp_ProductosSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ProductosSelect, -1);
             // TODO: esta línea de código carga datos en la tabla 'puntoDeVentaDataSet.Pedido' Puede moverla o quitarla según sea necesario.
 
 
@@ -37,24 +38,30 @@ namespace Punto_de_venta
                 MessageBox.Show("Debe llenar todos los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+           
 
 
-            int filaActual = 0;
+            
             //se transforma la imagen en un array de bits para su posterior insercion en la base de datos y controla los nulos
             byte[] image = pbFoto.Image == null ? null : Utilidades.imageToByteArray(pbFoto.Image, pbFoto.Image.RawFormat);
             //si el rd esta seleccionado para nuevo se aplica un insert
             if (rdNuevo.Checked)
             {
+                if (sp_ProductosSelectTableAdapter1.GetData(Convert.ToInt32(tbID.Text)).Rows.Count > 0)
+                {
+                    MessageBox.Show("Producto con ese ID ya existe", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 //peticion de un sp a la base de datos para insertar un nuevo cliente
                 queriesTableAdapter1.Sp_ProductosInsert(Convert.ToInt32(tbID.Text), tbNombre.Text.TrimEnd(' '), tbCantidadUnidad.Text.TrimEnd(' '),
                     Convert.ToInt32(tbPrecio.Text), Convert.ToInt16(tbStock.Text), 0, cbCancelado.Checked, image, tbDescripcion.Text.TrimEnd(' '));
-
+                
                 //actualiza los datos
-                filaActual = productosDataGridView.Rows.Count - 1;
-                this.productosTableAdapter.Fill(this.puntoDeVentaDataSet.Productos);
-                if (productosDataGridView.Rows.Count != 0)
+                filaActual = sp_ProductosSelectDataGridView.Rows.Count;
+                this.sp_ProductosSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ProductosSelect, -1);
+                if (sp_ProductosSelectDataGridView.Rows.Count != 0)
                 {
-                    productosDataGridView.CurrentCell = productosDataGridView.Rows[filaActual].Cells[0];
+                    sp_ProductosSelectDataGridView.CurrentCell = sp_ProductosSelectDataGridView.Rows[filaActual].Cells[0];
                 }
                 Utilidades.LimpiarCampos(gbProductos.Controls);
                 //lanza un mensaje de confirmacion
@@ -75,10 +82,10 @@ namespace Punto_de_venta
 
                 //lanza un mensaje de confirmacion
                 MessageBox.Show("Actualizado Con Exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                filaActual = productosDataGridView.Rows.IndexOf(productosDataGridView.CurrentRow);
+                filaActual = sp_ProductosSelectDataGridView.Rows.IndexOf(sp_ProductosSelectDataGridView.CurrentRow);
                 //actualiza los datos
-                this.productosTableAdapter.Fill(this.puntoDeVentaDataSet.Productos);
-                productosDataGridView.CurrentCell = productosDataGridView.Rows[filaActual].Cells[0];
+                this.sp_ProductosSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ProductosSelect, -1);
+                sp_ProductosSelectDataGridView.CurrentCell = sp_ProductosSelectDataGridView.Rows[filaActual].Cells[0];
 
             }
         }
@@ -101,12 +108,14 @@ namespace Punto_de_venta
             gbProductos.Enabled = !rdBorrar.Checked;
             btnGuardar.Enabled = !rdBorrar.Checked;
             btnBorrar.Enabled = rdBorrar.Checked;
+           
         }
 
         private void rdActualizar_CheckedChanged(object sender, EventArgs e)
         {
             //activa el boton guadar cuando rdActualizar esta checked y viceversa
             btnGuardar.Enabled = rdActualizar.Checked;
+            tbID.Enabled = !rdActualizar.Checked;
         }
 
         private void rdNuevo_CheckedChanged(object sender, EventArgs e)
@@ -119,17 +128,21 @@ namespace Punto_de_venta
                 Utilidades.LimpiarCampos(gbProductos.Controls);
 
                 btnGuardar.Enabled = rdNuevo.Checked;
+                tbEnPedido.Text = "0";
+                cbCancelado.Checked = false;
 
 
             }
             else
             {
-                this.productosTableAdapter.Fill(this.puntoDeVentaDataSet.Productos);
+                this.sp_ProductosSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ProductosSelect, -1);
+
             }
 
 
             //vuelve activar el datagrid
-            productosDataGridView.Enabled = !rdNuevo.Checked;
+            sp_ProductosSelectDataGridView.Enabled = !rdNuevo.Checked;
+            fillToolStrip.Enabled = !rdNuevo.Checked;
         }
 
         private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
@@ -141,7 +154,63 @@ namespace Punto_de_venta
         private void SoloLetras_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            if(sp_ProductosSelectDataGridView.Rows.Count <= 0)
+            {
+                return;
+            }
+
+           if((bool)queriesTableAdapter1.ExisteProductoEnRegistros(Convert.ToInt32(tbID.Text)))
+            {
+                
+                MessageBox.Show("No se puede borrar el producto debido a que ya " +
+                    "hay registros con este id, el status del producto sera cambiado " +
+                    "a cancelado", "Alerta!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                byte[] image = pbFoto.Image == null ? null : Utilidades.imageToByteArray(pbFoto.Image, pbFoto.Image.RawFormat);
+                //peticion de un sp a la base de datos para actualizar un nuevo cliente
+                queriesTableAdapter1.Sp_ProductosUpdate(Convert.ToInt32(tbID.Text), tbNombre.Text.TrimEnd(' '), tbCantidadUnidad.Text.TrimEnd(' '),
+                    Convert.ToDecimal(tbPrecio.Text), Convert.ToInt16(tbStock.Text), Convert.ToInt16(tbEnPedido.Text), true,image,
+                     tbDescripcion.Text.TrimEnd(' '));
+
+                filaActual = sp_ProductosSelectDataGridView.Rows.IndexOf(sp_ProductosSelectDataGridView.CurrentRow);
+                //actualiza los datos
+                this.sp_ProductosSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ProductosSelect, -1);
+                sp_ProductosSelectDataGridView.CurrentCell = sp_ProductosSelectDataGridView.Rows[filaActual].Cells[0];
+                return;
+            }
+
+            queriesTableAdapter1.Sp_ProductosDelete(Convert.ToInt32(tbID.Text));
+            this.sp_ProductosSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ProductosSelect,-1);
+            MessageBox.Show("Borrado Con Exito", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.sp_ProductosSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ProductosSelect, new System.Nullable<int>(((int)(System.Convert.ChangeType(tbBuscarId.Text, typeof(int))))));
+                if (rdNuevo.Checked)
+                {
+                    Utilidades.LimpiarCampos(gbProductos.Controls);
+                    
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.sp_ProductosSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ProductosSelect, -1);
+            tbBuscarId.Text = "";
+            
         }
     }
 }

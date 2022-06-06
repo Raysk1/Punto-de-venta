@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
             this.gbClientes = new System.Windows.Forms.GroupBox();
             this.btnAgregarFoto = new System.Windows.Forms.Button();
             this.pbFoto = new System.Windows.Forms.PictureBox();
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sp_ClientesSelectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.puntoDeVentaDataSet = new Punto_de_venta.PuntoDeVentaDataSet();
             this.cbSexo = new System.Windows.Forms.ComboBox();
             this.lblSexo = new System.Windows.Forms.Label();
@@ -58,7 +59,14 @@
             this.gbBotones = new System.Windows.Forms.GroupBox();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.queriesTableAdapter1 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.QueriesTableAdapter();
-            this.clientesTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.ClientesTableAdapter();
+            this.sp_VentaSelectAllByIdEmpleadoTableAdapter1 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_VentaSelectAllByIdEmpleadoTableAdapter();
+            this.sp_ClientesSelectTableAdapter1 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_ClientesSelectTableAdapter();
+            this.fillToolStrip = new System.Windows.Forms.ToolStrip();
+            this.idEmpleadoToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.tbBuscarId = new System.Windows.Forms.ToolStripTextBox();
+            this.btnBuscar = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelar = new System.Windows.Forms.ToolStripButton();
+            this.tableAdapterManager = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager();
             this.clientesDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,14 +74,15 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
             this.panel2.SuspendLayout();
             this.gbBotones.SuspendLayout();
+            this.fillToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,14 +108,14 @@
             this.gbClientes.Enabled = false;
             this.gbClientes.Location = new System.Drawing.Point(0, 94);
             this.gbClientes.Name = "gbClientes";
-            this.gbClientes.Size = new System.Drawing.Size(1064, 277);
+            this.gbClientes.Size = new System.Drawing.Size(1064, 237);
             this.gbClientes.TabIndex = 19;
             this.gbClientes.TabStop = false;
             // 
             // btnAgregarFoto
             // 
             this.btnAgregarFoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarFoto.Location = new System.Drawing.Point(909, 175);
+            this.btnAgregarFoto.Location = new System.Drawing.Point(863, 175);
             this.btnAgregarFoto.Name = "btnAgregarFoto";
             this.btnAgregarFoto.Size = new System.Drawing.Size(150, 50);
             this.btnAgregarFoto.TabIndex = 32;
@@ -118,18 +127,18 @@
             // 
             this.pbFoto.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.pbFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbFoto.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.clientesBindingSource, "Foto", true));
-            this.pbFoto.Location = new System.Drawing.Point(909, 19);
+            this.pbFoto.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.sp_ClientesSelectBindingSource, "foto", true));
+            this.pbFoto.Location = new System.Drawing.Point(863, 19);
             this.pbFoto.Name = "pbFoto";
             this.pbFoto.Size = new System.Drawing.Size(150, 150);
             this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFoto.TabIndex = 33;
             this.pbFoto.TabStop = false;
             // 
-            // clientesBindingSource
+            // sp_ClientesSelectBindingSource
             // 
-            this.clientesBindingSource.DataMember = "Clientes";
-            this.clientesBindingSource.DataSource = this.puntoDeVentaDataSet;
+            this.sp_ClientesSelectBindingSource.DataMember = "Sp_ClientesSelect";
+            this.sp_ClientesSelectBindingSource.DataSource = this.puntoDeVentaDataSet;
             // 
             // puntoDeVentaDataSet
             // 
@@ -138,13 +147,14 @@
             // 
             // cbSexo
             // 
-            this.cbSexo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientesBindingSource, "Sexo", true));
+            this.cbSexo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectBindingSource, "Sexo", true));
+            this.cbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbSexo.FormattingEnabled = true;
             this.cbSexo.Items.AddRange(new object[] {
             "M",
             "H"});
-            this.cbSexo.Location = new System.Drawing.Point(678, 118);
+            this.cbSexo.Location = new System.Drawing.Point(632, 118);
             this.cbSexo.Name = "cbSexo";
             this.cbSexo.Size = new System.Drawing.Size(200, 24);
             this.cbSexo.TabIndex = 5;
@@ -154,7 +164,7 @@
             // 
             this.lblSexo.AutoSize = true;
             this.lblSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblSexo.Location = new System.Drawing.Point(595, 121);
+            this.lblSexo.Location = new System.Drawing.Point(549, 121);
             this.lblSexo.Name = "lblSexo";
             this.lblSexo.Size = new System.Drawing.Size(43, 17);
             this.lblSexo.TabIndex = 31;
@@ -162,19 +172,19 @@
             // 
             // dtpFecNacimiento
             // 
-            this.dtpFecNacimiento.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.clientesBindingSource, "FechaNacimiento", true));
+            this.dtpFecNacimiento.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sp_ClientesSelectBindingSource, "FechaNacimiento", true));
             this.dtpFecNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtpFecNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecNacimiento.Location = new System.Drawing.Point(678, 160);
+            this.dtpFecNacimiento.Location = new System.Drawing.Point(632, 160);
             this.dtpFecNacimiento.Name = "dtpFecNacimiento";
             this.dtpFecNacimiento.Size = new System.Drawing.Size(200, 23);
             this.dtpFecNacimiento.TabIndex = 6;
             // 
             // tbNombre
             // 
-            this.tbNombre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientesBindingSource, "Nombre", true));
+            this.tbNombre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectBindingSource, "Nombre", true));
             this.tbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tbNombre.Location = new System.Drawing.Point(275, 84);
+            this.tbNombre.Location = new System.Drawing.Point(229, 84);
             this.tbNombre.MaxLength = 30;
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(200, 23);
@@ -183,9 +193,9 @@
             // 
             // tbApPaterno
             // 
-            this.tbApPaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientesBindingSource, "ApellidoPaterno", true));
+            this.tbApPaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectBindingSource, "ApellidoPaterno", true));
             this.tbApPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tbApPaterno.Location = new System.Drawing.Point(275, 122);
+            this.tbApPaterno.Location = new System.Drawing.Point(229, 122);
             this.tbApPaterno.MaxLength = 30;
             this.tbApPaterno.Name = "tbApPaterno";
             this.tbApPaterno.Size = new System.Drawing.Size(200, 23);
@@ -194,9 +204,9 @@
             // 
             // tbApMaterno
             // 
-            this.tbApMaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientesBindingSource, "ApellidoMaterno", true));
+            this.tbApMaterno.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectBindingSource, "ApellidoMaterno", true));
             this.tbApMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tbApMaterno.Location = new System.Drawing.Point(275, 163);
+            this.tbApMaterno.Location = new System.Drawing.Point(229, 163);
             this.tbApMaterno.MaxLength = 30;
             this.tbApMaterno.Name = "tbApMaterno";
             this.tbApMaterno.Size = new System.Drawing.Size(200, 23);
@@ -205,9 +215,9 @@
             // 
             // tbTelefono
             // 
-            this.tbTelefono.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientesBindingSource, "Teléfono", true));
+            this.tbTelefono.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectBindingSource, "Teléfono", true));
             this.tbTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tbTelefono.Location = new System.Drawing.Point(678, 72);
+            this.tbTelefono.Location = new System.Drawing.Point(632, 72);
             this.tbTelefono.MaxLength = 10;
             this.tbTelefono.Name = "tbTelefono";
             this.tbTelefono.Size = new System.Drawing.Size(200, 23);
@@ -218,7 +228,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblNombre.Location = new System.Drawing.Point(185, 87);
+            this.lblNombre.Location = new System.Drawing.Point(139, 87);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(62, 17);
             this.lblNombre.TabIndex = 11;
@@ -228,7 +238,7 @@
             // 
             this.lblApPaterno.AutoSize = true;
             this.lblApPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblApPaterno.Location = new System.Drawing.Point(145, 125);
+            this.lblApPaterno.Location = new System.Drawing.Point(99, 125);
             this.lblApPaterno.Name = "lblApPaterno";
             this.lblApPaterno.Size = new System.Drawing.Size(116, 17);
             this.lblApPaterno.TabIndex = 10;
@@ -238,7 +248,7 @@
             // 
             this.lblTelefono.AutoSize = true;
             this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblTelefono.Location = new System.Drawing.Point(570, 75);
+            this.lblTelefono.Location = new System.Drawing.Point(524, 75);
             this.lblTelefono.Name = "lblTelefono";
             this.lblTelefono.Size = new System.Drawing.Size(68, 17);
             this.lblTelefono.TabIndex = 7;
@@ -248,7 +258,7 @@
             // 
             this.lblFechaNac.AutoSize = true;
             this.lblFechaNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblFechaNac.Location = new System.Drawing.Point(513, 165);
+            this.lblFechaNac.Location = new System.Drawing.Point(467, 165);
             this.lblFechaNac.Name = "lblFechaNac";
             this.lblFechaNac.Size = new System.Drawing.Size(125, 17);
             this.lblFechaNac.TabIndex = 4;
@@ -258,7 +268,7 @@
             // 
             this.lblApMaterno.AutoSize = true;
             this.lblApMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblApMaterno.Location = new System.Drawing.Point(143, 166);
+            this.lblApMaterno.Location = new System.Drawing.Point(97, 166);
             this.lblApMaterno.Name = "lblApMaterno";
             this.lblApMaterno.Size = new System.Drawing.Size(118, 17);
             this.lblApMaterno.TabIndex = 2;
@@ -268,7 +278,7 @@
             // 
             this.lblIdCliente.AutoSize = true;
             this.lblIdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblIdCliente.Location = new System.Drawing.Point(176, 48);
+            this.lblIdCliente.Location = new System.Drawing.Point(130, 48);
             this.lblIdCliente.Name = "lblIdCliente";
             this.lblIdCliente.Size = new System.Drawing.Size(72, 17);
             this.lblIdCliente.TabIndex = 1;
@@ -276,10 +286,10 @@
             // 
             // tbIdCliente
             // 
-            this.tbIdCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientesBindingSource, "IdCliente", true));
+            this.tbIdCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_ClientesSelectBindingSource, "IdCliente", true));
             this.tbIdCliente.Enabled = false;
             this.tbIdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.tbIdCliente.Location = new System.Drawing.Point(275, 45);
+            this.tbIdCliente.Location = new System.Drawing.Point(229, 45);
             this.tbIdCliente.MaxLength = 30;
             this.tbIdCliente.Name = "tbIdCliente";
             this.tbIdCliente.Size = new System.Drawing.Size(200, 23);
@@ -417,9 +427,9 @@
             this.gbBotones.Controls.Add(this.btnBorrar);
             this.gbBotones.Controls.Add(this.btnGuardar);
             this.gbBotones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbBotones.Location = new System.Drawing.Point(0, 371);
+            this.gbBotones.Location = new System.Drawing.Point(0, 331);
             this.gbBotones.Name = "gbBotones";
-            this.gbBotones.Size = new System.Drawing.Size(1064, 66);
+            this.gbBotones.Size = new System.Drawing.Size(1064, 50);
             this.gbBotones.TabIndex = 23;
             this.gbBotones.TabStop = false;
             // 
@@ -435,15 +445,79 @@
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
-            // clientesTableAdapter
+            // sp_VentaSelectAllByIdEmpleadoTableAdapter1
             // 
-            this.clientesTableAdapter.ClearBeforeFill = true;
+            this.sp_VentaSelectAllByIdEmpleadoTableAdapter1.ClearBeforeFill = true;
+            // 
+            // sp_ClientesSelectTableAdapter1
+            // 
+            this.sp_ClientesSelectTableAdapter1.ClearBeforeFill = true;
+            // 
+            // fillToolStrip
+            // 
+            this.fillToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.idEmpleadoToolStripLabel,
+            this.tbBuscarId,
+            this.btnBuscar,
+            this.btnCancelar});
+            this.fillToolStrip.Location = new System.Drawing.Point(0, 381);
+            this.fillToolStrip.Name = "fillToolStrip";
+            this.fillToolStrip.Size = new System.Drawing.Size(1064, 25);
+            this.fillToolStrip.TabIndex = 24;
+            this.fillToolStrip.Text = "fillToolStrip";
+            // 
+            // idEmpleadoToolStripLabel
+            // 
+            this.idEmpleadoToolStripLabel.Name = "idEmpleadoToolStripLabel";
+            this.idEmpleadoToolStripLabel.Size = new System.Drawing.Size(78, 22);
+            this.idEmpleadoToolStripLabel.Text = "ID del cliente:";
+            // 
+            // tbBuscarId
+            // 
+            this.tbBuscarId.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbBuscarId.Name = "tbBuscarId";
+            this.tbBuscarId.Size = new System.Drawing.Size(100, 25);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(46, 22);
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(57, 22);
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClientesTableAdapter = null;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.ControlUsuarioTableAdapter = null;
+            this.tableAdapterManager.DetallesPedidoTableAdapter = null;
+            this.tableAdapterManager.DetallesVentaTableAdapter = null;
+            this.tableAdapterManager.EmpleadosTableAdapter = null;
+            this.tableAdapterManager.NivelesTableAdapter = null;
+            this.tableAdapterManager.PedidoTableAdapter = null;
+            this.tableAdapterManager.ProductosTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.usuariosTableAdapter = null;
+            this.tableAdapterManager.VentaTableAdapter = null;
             // 
             // clientesDataGridView
             // 
             this.clientesDataGridView.AllowUserToAddRows = false;
             this.clientesDataGridView.AllowUserToDeleteRows = false;
             this.clientesDataGridView.AutoGenerateColumns = false;
+            this.clientesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.clientesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -452,19 +526,18 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewImageColumn1});
-            this.clientesDataGridView.DataSource = this.clientesBindingSource;
+            this.dataGridViewImageColumn1,
+            this.dataGridViewTextBoxColumn7});
+            this.clientesDataGridView.DataSource = this.sp_ClientesSelectBindingSource;
             this.clientesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clientesDataGridView.Location = new System.Drawing.Point(0, 437);
+            this.clientesDataGridView.Location = new System.Drawing.Point(0, 406);
             this.clientesDataGridView.Name = "clientesDataGridView";
             this.clientesDataGridView.ReadOnly = true;
-            this.clientesDataGridView.Size = new System.Drawing.Size(1064, 136);
-            this.clientesDataGridView.TabIndex = 24;
+            this.clientesDataGridView.Size = new System.Drawing.Size(1064, 167);
+            this.clientesDataGridView.TabIndex = 25;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCliente";
             this.dataGridViewTextBoxColumn1.HeaderText = "IdCliente";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -472,7 +545,6 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Nombre";
             this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -480,7 +552,6 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "ApellidoPaterno";
             this.dataGridViewTextBoxColumn3.HeaderText = "ApellidoPaterno";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -488,7 +559,6 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn4.DataPropertyName = "ApellidoMaterno";
             this.dataGridViewTextBoxColumn4.HeaderText = "ApellidoMaterno";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -496,58 +566,58 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Teléfono";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Teléfono";
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Sexo";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Sexo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Sexo";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Sexo";
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Teléfono";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Teléfono";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.DataPropertyName = "foto";
+            this.dataGridViewImageColumn1.HeaderText = "foto";
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn7
             // 
-            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn7.DataPropertyName = "FechaNacimiento";
             this.dataGridViewTextBoxColumn7.HeaderText = "FechaNacimiento";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewImageColumn1.DataPropertyName = "Foto";
-            this.dataGridViewImageColumn1.HeaderText = "Foto";
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            // 
-            // formClientes
+            // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1064, 573);
             this.Controls.Add(this.clientesDataGridView);
+            this.Controls.Add(this.fillToolStrip);
             this.Controls.Add(this.gbBotones);
             this.Controls.Add(this.gbClientes);
             this.Controls.Add(this.panel2);
-            this.Name = "formClientes";
+            this.Name = "FormClientes";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.formClientes_Load);
             this.gbClientes.ResumeLayout(false);
             this.gbClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_ClientesSelectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).EndInit();
             this.panel2.ResumeLayout(false);
             this.gbBotones.ResumeLayout(false);
+            this.fillToolStrip.ResumeLayout(false);
+            this.fillToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientesDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -581,8 +651,15 @@
         private System.Windows.Forms.Button btnAgregarFoto;
         private System.Windows.Forms.PictureBox pbFoto;
         private PuntoDeVentaDataSet puntoDeVentaDataSet;
-        private System.Windows.Forms.BindingSource clientesBindingSource;
-        private PuntoDeVentaDataSetTableAdapters.ClientesTableAdapter clientesTableAdapter;
+        private PuntoDeVentaDataSetTableAdapters.Sp_VentaSelectAllByIdEmpleadoTableAdapter sp_VentaSelectAllByIdEmpleadoTableAdapter1;
+        private PuntoDeVentaDataSetTableAdapters.Sp_ClientesSelectTableAdapter sp_ClientesSelectTableAdapter1;
+        private System.Windows.Forms.ToolStrip fillToolStrip;
+        private System.Windows.Forms.ToolStripLabel idEmpleadoToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox tbBuscarId;
+        private System.Windows.Forms.ToolStripButton btnBuscar;
+        private System.Windows.Forms.ToolStripButton btnCancelar;
+        private System.Windows.Forms.BindingSource sp_ClientesSelectBindingSource;
+        private PuntoDeVentaDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView clientesDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -590,7 +667,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }

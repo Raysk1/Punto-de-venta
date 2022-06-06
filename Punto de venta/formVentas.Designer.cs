@@ -29,34 +29,41 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVentas));
             this.panel1 = new System.Windows.Forms.Panel();
             this.rdInfo = new System.Windows.Forms.RadioButton();
             this.gbVentas = new System.Windows.Forms.GroupBox();
+            this.btnDetalles = new System.Windows.Forms.Button();
+            this.cbCancelado = new System.Windows.Forms.CheckBox();
+            this.sp_VentaSelectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.puntoDeVentaDataSet = new Punto_de_venta.PuntoDeVentaDataSet();
-            this.view_VentaCabeceraBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.view_VentaCabeceraTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.View_VentaCabeceraTableAdapter();
-            this.tableAdapterManager = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager();
-            this.view_VentaCabeceraDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.tbCantidad = new System.Windows.Forms.TextBox();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.tbIdVenta = new System.Windows.Forms.TextBox();
             this.lblNombreCliente = new System.Windows.Forms.Label();
             this.lblNombreEmpleado = new System.Windows.Forms.Label();
             this.lblIdVenta = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.cbCancelado = new System.Windows.Forms.CheckBox();
-            this.btnDetalles = new System.Windows.Forms.Button();
+            this.sp_VentaSelectTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_VentaSelectTableAdapter();
+            this.tableAdapterManager = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager();
+            this.fillToolStrip = new System.Windows.Forms.ToolStrip();
+            this.idVentaToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.tbBuscarId = new System.Windows.Forms.ToolStripTextBox();
+            this.btnBuscar = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelar = new System.Windows.Forms.ToolStripButton();
+            this.ventaDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.gbVentas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_VentaSelectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_VentaCabeceraBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_VentaCabeceraDataGridView)).BeginInit();
+            this.fillToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ventaDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,7 +73,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1081, 96);
+            this.panel1.Size = new System.Drawing.Size(1064, 96);
             this.panel1.TabIndex = 18;
             // 
             // rdInfo
@@ -85,7 +92,7 @@
             this.rdInfo.Location = new System.Drawing.Point(0, 0);
             this.rdInfo.Margin = new System.Windows.Forms.Padding(0);
             this.rdInfo.Name = "rdInfo";
-            this.rdInfo.Size = new System.Drawing.Size(1081, 96);
+            this.rdInfo.Size = new System.Drawing.Size(1064, 96);
             this.rdInfo.TabIndex = 12;
             this.rdInfo.TabStop = true;
             this.rdInfo.Text = "Informacion";
@@ -108,97 +115,71 @@
             this.gbVentas.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbVentas.Location = new System.Drawing.Point(0, 96);
             this.gbVentas.Name = "gbVentas";
-            this.gbVentas.Size = new System.Drawing.Size(1081, 237);
+            this.gbVentas.Size = new System.Drawing.Size(1064, 237);
             this.gbVentas.TabIndex = 19;
             this.gbVentas.TabStop = false;
+            // 
+            // btnDetalles
+            // 
+            this.btnDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalles.Location = new System.Drawing.Point(699, 135);
+            this.btnDetalles.Name = "btnDetalles";
+            this.btnDetalles.Size = new System.Drawing.Size(209, 45);
+            this.btnDetalles.TabIndex = 42;
+            this.btnDetalles.Text = "Ver detalles";
+            this.btnDetalles.UseVisualStyleBackColor = true;
+            this.btnDetalles.Click += new System.EventHandler(this.btnDetalles_Click);
+            // 
+            // cbCancelado
+            // 
+            this.cbCancelado.AutoSize = true;
+            this.cbCancelado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbCancelado.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.sp_VentaSelectBindingSource, "Cancelado", true));
+            this.cbCancelado.Enabled = false;
+            this.cbCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCancelado.Location = new System.Drawing.Point(623, 62);
+            this.cbCancelado.Name = "cbCancelado";
+            this.cbCancelado.Size = new System.Drawing.Size(128, 24);
+            this.cbCancelado.TabIndex = 41;
+            this.cbCancelado.Text = "Cancelado:     ";
+            this.cbCancelado.UseVisualStyleBackColor = true;
+            // 
+            // sp_VentaSelectBindingSource
+            // 
+            this.sp_VentaSelectBindingSource.DataMember = "Sp_VentaSelect";
+            this.sp_VentaSelectBindingSource.DataSource = this.puntoDeVentaDataSet;
             // 
             // puntoDeVentaDataSet
             // 
             this.puntoDeVentaDataSet.DataSetName = "PuntoDeVentaDataSet";
             this.puntoDeVentaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // view_VentaCabeceraBindingSource
+            // dateTimePicker1
             // 
-            this.view_VentaCabeceraBindingSource.DataMember = "View_VentaCabecera";
-            this.view_VentaCabeceraBindingSource.DataSource = this.puntoDeVentaDataSet;
+            this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sp_VentaSelectBindingSource, "FechaPedido", true));
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(718, 19);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
+            this.dateTimePicker1.TabIndex = 40;
             // 
-            // view_VentaCabeceraTableAdapter
+            // label1
             // 
-            this.view_VentaCabeceraTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ClientesTableAdapter = null;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.ControlUsuarioTableAdapter = null;
-            this.tableAdapterManager.DetallesPedidoTableAdapter = null;
-            this.tableAdapterManager.DetallesVentaTableAdapter = null;
-            this.tableAdapterManager.EmpleadosTableAdapter = null;
-            this.tableAdapterManager.NivelesTableAdapter = null;
-            this.tableAdapterManager.PedidoTableAdapter = null;
-            this.tableAdapterManager.ProductosTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.usuariosTableAdapter = null;
-            this.tableAdapterManager.VentaTableAdapter = null;
-            // 
-            // view_VentaCabeceraDataGridView
-            // 
-            this.view_VentaCabeceraDataGridView.AllowUserToAddRows = false;
-            this.view_VentaCabeceraDataGridView.AllowUserToDeleteRows = false;
-            this.view_VentaCabeceraDataGridView.AutoGenerateColumns = false;
-            this.view_VentaCabeceraDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.view_VentaCabeceraDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_VentaCabeceraDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewCheckBoxColumn1});
-            this.view_VentaCabeceraDataGridView.DataSource = this.view_VentaCabeceraBindingSource;
-            this.view_VentaCabeceraDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.view_VentaCabeceraDataGridView.Location = new System.Drawing.Point(0, 333);
-            this.view_VentaCabeceraDataGridView.Name = "view_VentaCabeceraDataGridView";
-            this.view_VentaCabeceraDataGridView.ReadOnly = true;
-            this.view_VentaCabeceraDataGridView.Size = new System.Drawing.Size(1081, 416);
-            this.view_VentaCabeceraDataGridView.TabIndex = 20;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdVenta";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IdVenta";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "NombreCliente";
-            this.dataGridViewTextBoxColumn2.HeaderText = "NombreCliente";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "NombreEmpleado";
-            this.dataGridViewTextBoxColumn3.HeaderText = "NombreEmpleado";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "FechaPedido";
-            this.dataGridViewTextBoxColumn4.HeaderText = "FechaPedido";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Cancelado";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Cancelado";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(573, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 20);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Fecha de la venta:";
             // 
             // tbCantidad
             // 
-            this.tbCantidad.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.view_VentaCabeceraBindingSource, "NombreCliente", true));
+            this.tbCantidad.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_VentaSelectBindingSource, "NombreCliente", true));
             this.tbCantidad.Enabled = false;
+            this.tbCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCantidad.Location = new System.Drawing.Point(220, 104);
             this.tbCantidad.Multiline = true;
             this.tbCantidad.Name = "tbCantidad";
@@ -207,8 +188,9 @@
             // 
             // tbNombre
             // 
-            this.tbNombre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.view_VentaCabeceraBindingSource, "NombreEmpleado", true));
+            this.tbNombre.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_VentaSelectBindingSource, "NombreEmpleado", true));
             this.tbNombre.Enabled = false;
+            this.tbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNombre.Location = new System.Drawing.Point(220, 61);
             this.tbNombre.Multiline = true;
             this.tbNombre.Name = "tbNombre";
@@ -217,8 +199,9 @@
             // 
             // tbIdVenta
             // 
-            this.tbIdVenta.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.view_VentaCabeceraBindingSource, "IdVenta", true));
+            this.tbIdVenta.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_VentaSelectBindingSource, "IdVenta", true));
             this.tbIdVenta.Enabled = false;
+            this.tbIdVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbIdVenta.Location = new System.Drawing.Point(220, 20);
             this.tbIdVenta.Multiline = true;
             this.tbIdVenta.Name = "tbIdVenta";
@@ -255,69 +238,149 @@
             this.lblIdVenta.TabIndex = 33;
             this.lblIdVenta.Text = "Codigo venta:";
             // 
-            // label1
+            // sp_VentaSelectTableAdapter
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(573, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 20);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Fecha de la venta:";
+            this.sp_VentaSelectTableAdapter.ClearBeforeFill = true;
             // 
-            // dateTimePicker1
+            // tableAdapterManager
             // 
-            this.dateTimePicker1.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.view_VentaCabeceraBindingSource, "FechaPedido", true));
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(718, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 40;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClientesTableAdapter = null;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.ControlUsuarioTableAdapter = null;
+            this.tableAdapterManager.DetallesPedidoTableAdapter = null;
+            this.tableAdapterManager.DetallesVentaTableAdapter = null;
+            this.tableAdapterManager.EmpleadosTableAdapter = null;
+            this.tableAdapterManager.NivelesTableAdapter = null;
+            this.tableAdapterManager.PedidoTableAdapter = null;
+            this.tableAdapterManager.ProductosTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.usuariosTableAdapter = null;
+            this.tableAdapterManager.VentaTableAdapter = null;
             // 
-            // cbCancelado
+            // fillToolStrip
             // 
-            this.cbCancelado.AutoSize = true;
-            this.cbCancelado.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbCancelado.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.view_VentaCabeceraBindingSource, "Cancelado", true));
-            this.cbCancelado.Enabled = false;
-            this.cbCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCancelado.Location = new System.Drawing.Point(623, 62);
-            this.cbCancelado.Name = "cbCancelado";
-            this.cbCancelado.Size = new System.Drawing.Size(128, 24);
-            this.cbCancelado.TabIndex = 41;
-            this.cbCancelado.Text = "Cancelado:     ";
-            this.cbCancelado.UseVisualStyleBackColor = true;
+            this.fillToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.idVentaToolStripLabel,
+            this.tbBuscarId,
+            this.btnBuscar,
+            this.btnCancelar});
+            this.fillToolStrip.Location = new System.Drawing.Point(0, 333);
+            this.fillToolStrip.Name = "fillToolStrip";
+            this.fillToolStrip.Size = new System.Drawing.Size(1064, 25);
+            this.fillToolStrip.TabIndex = 21;
+            this.fillToolStrip.Text = "fillToolStrip";
             // 
-            // btnDetalles
+            // idVentaToolStripLabel
             // 
-            this.btnDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalles.Location = new System.Drawing.Point(699, 135);
-            this.btnDetalles.Name = "btnDetalles";
-            this.btnDetalles.Size = new System.Drawing.Size(209, 45);
-            this.btnDetalles.TabIndex = 42;
-            this.btnDetalles.Text = "Ver detalles";
-            this.btnDetalles.UseVisualStyleBackColor = true;
+            this.idVentaToolStripLabel.Name = "idVentaToolStripLabel";
+            this.idVentaToolStripLabel.Size = new System.Drawing.Size(78, 22);
+            this.idVentaToolStripLabel.Text = "ID de la venta";
+            // 
+            // tbBuscarId
+            // 
+            this.tbBuscarId.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbBuscarId.Name = "tbBuscarId";
+            this.tbBuscarId.Size = new System.Drawing.Size(100, 25);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(46, 22);
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(57, 22);
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // ventaDataGridView
+            // 
+            this.ventaDataGridView.AllowUserToAddRows = false;
+            this.ventaDataGridView.AllowUserToDeleteRows = false;
+            this.ventaDataGridView.AutoGenerateColumns = false;
+            this.ventaDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ventaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ventaDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewCheckBoxColumn1});
+            this.ventaDataGridView.DataSource = this.sp_VentaSelectBindingSource;
+            this.ventaDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ventaDataGridView.Location = new System.Drawing.Point(0, 358);
+            this.ventaDataGridView.Name = "ventaDataGridView";
+            this.ventaDataGridView.ReadOnly = true;
+            this.ventaDataGridView.Size = new System.Drawing.Size(1064, 215);
+            this.ventaDataGridView.TabIndex = 21;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdVenta";
+            this.dataGridViewTextBoxColumn1.HeaderText = "IdVenta";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "NombreCliente";
+            this.dataGridViewTextBoxColumn2.HeaderText = "NombreCliente";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "NombreEmpleado";
+            this.dataGridViewTextBoxColumn3.HeaderText = "NombreEmpleado";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "FechaPedido";
+            this.dataGridViewTextBoxColumn4.HeaderText = "FechaPedido";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Cancelado";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Cancelado";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
             // FormVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 749);
-            this.Controls.Add(this.view_VentaCabeceraDataGridView);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1064, 573);
+            this.Controls.Add(this.ventaDataGridView);
+            this.Controls.Add(this.fillToolStrip);
             this.Controls.Add(this.gbVentas);
             this.Controls.Add(this.panel1);
             this.Name = "FormVentas";
             this.Text = "FormVentas";
             this.Load += new System.EventHandler(this.FormVentas_Load);
+            this.ParentChanged += new System.EventHandler(this.FormVentas_ParentChanged);
             this.panel1.ResumeLayout(false);
             this.gbVentas.ResumeLayout(false);
             this.gbVentas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_VentaSelectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_VentaCabeceraBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_VentaCabeceraDataGridView)).EndInit();
+            this.fillToolStrip.ResumeLayout(false);
+            this.fillToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ventaDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -326,16 +389,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton rdInfo;
         private System.Windows.Forms.GroupBox gbVentas;
-        private PuntoDeVentaDataSet puntoDeVentaDataSet;
-        private System.Windows.Forms.BindingSource view_VentaCabeceraBindingSource;
-        private PuntoDeVentaDataSetTableAdapters.View_VentaCabeceraTableAdapter view_VentaCabeceraTableAdapter;
-        private PuntoDeVentaDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView view_VentaCabeceraDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbCantidad;
@@ -346,5 +399,20 @@
         private System.Windows.Forms.Label lblIdVenta;
         private System.Windows.Forms.CheckBox cbCancelado;
         private System.Windows.Forms.Button btnDetalles;
+        private PuntoDeVentaDataSet puntoDeVentaDataSet;
+        private System.Windows.Forms.BindingSource sp_VentaSelectBindingSource;
+        private PuntoDeVentaDataSetTableAdapters.Sp_VentaSelectTableAdapter sp_VentaSelectTableAdapter;
+        private PuntoDeVentaDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.ToolStrip fillToolStrip;
+        private System.Windows.Forms.ToolStripLabel idVentaToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox tbBuscarId;
+        private System.Windows.Forms.ToolStripButton btnBuscar;
+        private System.Windows.Forms.DataGridView ventaDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.ToolStripButton btnCancelar;
     }
 }

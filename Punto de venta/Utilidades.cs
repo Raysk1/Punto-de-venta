@@ -11,6 +11,7 @@ namespace Punto_de_venta
 {
     public static class Utilidades
     {
+       public static FormPrincipal principal;
         public static byte[] imageToByteArray(Image imageIn, ImageFormat imageFormat)
         {
             if (imageIn != null)

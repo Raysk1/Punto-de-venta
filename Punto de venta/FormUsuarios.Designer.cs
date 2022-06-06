@@ -33,20 +33,16 @@
             System.Windows.Forms.Label claveLabel;
             System.Windows.Forms.Label idNivelLabel;
             System.Windows.Forms.Label idEmpleadoLabel;
-            this.puntoDeVentaDataSet = new Punto_de_venta.PuntoDeVentaDataSet();
-            this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usuariosTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.usuariosTableAdapter();
-            this.usuariosDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUsuarios));
             this.panel2 = new System.Windows.Forms.Panel();
             this.rdInfo = new System.Windows.Forms.RadioButton();
             this.rdBorrar = new System.Windows.Forms.RadioButton();
             this.rdActualizar = new System.Windows.Forms.RadioButton();
             this.rdNuevo = new System.Windows.Forms.RadioButton();
             this.gbUsuarios = new System.Windows.Forms.GroupBox();
+            this.cbNivel = new System.Windows.Forms.ComboBox();
+            this.sp_usuariosSelectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.puntoDeVentaDataSet = new Punto_de_venta.PuntoDeVentaDataSet();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.tbClave = new System.Windows.Forms.TextBox();
             this.tbIdEmpleado = new System.Windows.Forms.TextBox();
@@ -55,17 +51,29 @@
             this.btnBorrar = new System.Windows.Forms.Button();
             this.gbBotones = new System.Windows.Forms.GroupBox();
             this.sp_EmpleadosSelectTableAdapter1 = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_EmpleadosSelectTableAdapter();
-            this.cbNivel = new System.Windows.Forms.ComboBox();
+            this.sp_usuariosSelectTableAdapter = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.Sp_usuariosSelectTableAdapter();
+            this.tableAdapterManager = new Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager();
+            this.usuariosDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fillToolStrip = new System.Windows.Forms.ToolStrip();
+            this.idProductoToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.tbBuscarId = new System.Windows.Forms.ToolStripTextBox();
+            this.btnBuscar = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelar = new System.Windows.Forms.ToolStripButton();
             usuarioLabel = new System.Windows.Forms.Label();
             claveLabel = new System.Windows.Forms.Label();
             idNivelLabel = new System.Windows.Forms.Label();
             idEmpleadoLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuariosDataGridView)).BeginInit();
             this.panel2.SuspendLayout();
             this.gbUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_usuariosSelectBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).BeginInit();
             this.gbBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usuariosDataGridView)).BeginInit();
+            this.fillToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // usuarioLabel
@@ -108,69 +116,6 @@
             idEmpleadoLabel.TabIndex = 6;
             idEmpleadoLabel.Text = "Id Empleado:";
             // 
-            // puntoDeVentaDataSet
-            // 
-            this.puntoDeVentaDataSet.DataSetName = "PuntoDeVentaDataSet";
-            this.puntoDeVentaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usuariosBindingSource
-            // 
-            this.usuariosBindingSource.DataMember = "usuarios";
-            this.usuariosBindingSource.DataSource = this.puntoDeVentaDataSet;
-            // 
-            // usuariosTableAdapter
-            // 
-            this.usuariosTableAdapter.ClearBeforeFill = true;
-            // 
-            // usuariosDataGridView
-            // 
-            this.usuariosDataGridView.AllowUserToAddRows = false;
-            this.usuariosDataGridView.AllowUserToDeleteRows = false;
-            this.usuariosDataGridView.AutoGenerateColumns = false;
-            this.usuariosDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.usuariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.usuariosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.usuariosDataGridView.DataSource = this.usuariosBindingSource;
-            this.usuariosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usuariosDataGridView.Location = new System.Drawing.Point(0, 305);
-            this.usuariosDataGridView.Name = "usuariosDataGridView";
-            this.usuariosDataGridView.ReadOnly = true;
-            this.usuariosDataGridView.Size = new System.Drawing.Size(1081, 444);
-            this.usuariosDataGridView.TabIndex = 1;
-            this.usuariosDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usuariosDataGridView_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "usuario";
-            this.dataGridViewTextBoxColumn1.HeaderText = "usuario";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "clave";
-            this.dataGridViewTextBoxColumn2.HeaderText = "clave";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "IdNivel";
-            this.dataGridViewTextBoxColumn3.HeaderText = "IdNivel";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "IdEmpleado";
-            this.dataGridViewTextBoxColumn4.HeaderText = "IdEmpleado";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.rdInfo);
@@ -180,7 +125,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1081, 94);
+            this.panel2.Size = new System.Drawing.Size(1064, 94);
             this.panel2.TabIndex = 24;
             // 
             // rdInfo
@@ -292,13 +237,36 @@
             this.gbUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbUsuarios.Location = new System.Drawing.Point(0, 94);
             this.gbUsuarios.Name = "gbUsuarios";
-            this.gbUsuarios.Size = new System.Drawing.Size(1081, 145);
+            this.gbUsuarios.Size = new System.Drawing.Size(1064, 145);
             this.gbUsuarios.TabIndex = 25;
             this.gbUsuarios.TabStop = false;
             // 
+            // cbNivel
+            // 
+            this.cbNivel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_usuariosSelectBindingSource, "IdNivel", true));
+            this.cbNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNivel.FormattingEnabled = true;
+            this.cbNivel.Items.AddRange(new object[] {
+            "Admin",
+            "Empleado"});
+            this.cbNivel.Location = new System.Drawing.Point(702, 75);
+            this.cbNivel.Name = "cbNivel";
+            this.cbNivel.Size = new System.Drawing.Size(179, 28);
+            this.cbNivel.TabIndex = 8;
+            // 
+            // sp_usuariosSelectBindingSource
+            // 
+            this.sp_usuariosSelectBindingSource.DataMember = "Sp_usuariosSelect";
+            this.sp_usuariosSelectBindingSource.DataSource = this.puntoDeVentaDataSet;
+            // 
+            // puntoDeVentaDataSet
+            // 
+            this.puntoDeVentaDataSet.DataSetName = "PuntoDeVentaDataSet";
+            this.puntoDeVentaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tbUsuario
             // 
-            this.tbUsuario.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usuariosBindingSource, "usuario", true));
+            this.tbUsuario.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_usuariosSelectBindingSource, "usuario", true));
             this.tbUsuario.Location = new System.Drawing.Point(275, 42);
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(179, 26);
@@ -306,7 +274,7 @@
             // 
             // tbClave
             // 
-            this.tbClave.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usuariosBindingSource, "clave", true));
+            this.tbClave.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_usuariosSelectBindingSource, "clave", true));
             this.tbClave.Location = new System.Drawing.Point(275, 77);
             this.tbClave.Name = "tbClave";
             this.tbClave.Size = new System.Drawing.Size(179, 26);
@@ -314,7 +282,7 @@
             // 
             // tbIdEmpleado
             // 
-            this.tbIdEmpleado.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usuariosBindingSource, "IdEmpleado", true));
+            this.tbIdEmpleado.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_usuariosSelectBindingSource, "IdEmpleado", true));
             this.tbIdEmpleado.Location = new System.Drawing.Point(702, 42);
             this.tbIdEmpleado.Name = "tbIdEmpleado";
             this.tbIdEmpleado.Size = new System.Drawing.Size(179, 26);
@@ -351,7 +319,7 @@
             this.gbBotones.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbBotones.Location = new System.Drawing.Point(0, 239);
             this.gbBotones.Name = "gbBotones";
-            this.gbBotones.Size = new System.Drawing.Size(1081, 66);
+            this.gbBotones.Size = new System.Drawing.Size(1064, 66);
             this.gbBotones.TabIndex = 26;
             this.gbBotones.TabStop = false;
             // 
@@ -359,51 +327,146 @@
             // 
             this.sp_EmpleadosSelectTableAdapter1.ClearBeforeFill = true;
             // 
-            // cbNivel
+            // sp_usuariosSelectTableAdapter
             // 
-            this.cbNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbNivel.FormattingEnabled = true;
-            this.cbNivel.Items.AddRange(new object[] {
-            "Admin",
-            "Empleado"});
-            this.cbNivel.Location = new System.Drawing.Point(702, 75);
-            this.cbNivel.Name = "cbNivel";
-            this.cbNivel.Size = new System.Drawing.Size(179, 28);
-            this.cbNivel.TabIndex = 8;
+            this.sp_usuariosSelectTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClientesTableAdapter = null;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.ControlUsuarioTableAdapter = null;
+            this.tableAdapterManager.DetallesPedidoTableAdapter = null;
+            this.tableAdapterManager.DetallesVentaTableAdapter = null;
+            this.tableAdapterManager.EmpleadosTableAdapter = null;
+            this.tableAdapterManager.NivelesTableAdapter = null;
+            this.tableAdapterManager.PedidoTableAdapter = null;
+            this.tableAdapterManager.ProductosTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Punto_de_venta.PuntoDeVentaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.usuariosTableAdapter = null;
+            this.tableAdapterManager.VentaTableAdapter = null;
+            // 
+            // usuariosDataGridView
+            // 
+            this.usuariosDataGridView.AllowUserToAddRows = false;
+            this.usuariosDataGridView.AllowUserToDeleteRows = false;
+            this.usuariosDataGridView.AutoGenerateColumns = false;
+            this.usuariosDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.usuariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.usuariosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.usuariosDataGridView.DataSource = this.sp_usuariosSelectBindingSource;
+            this.usuariosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usuariosDataGridView.Location = new System.Drawing.Point(0, 330);
+            this.usuariosDataGridView.Name = "usuariosDataGridView";
+            this.usuariosDataGridView.ReadOnly = true;
+            this.usuariosDataGridView.Size = new System.Drawing.Size(1064, 243);
+            this.usuariosDataGridView.TabIndex = 28;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "usuario";
+            this.dataGridViewTextBoxColumn1.HeaderText = "usuario";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "clave";
+            this.dataGridViewTextBoxColumn2.HeaderText = "clave";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "IdNivel";
+            this.dataGridViewTextBoxColumn3.HeaderText = "IdNivel";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "IdEmpleado";
+            this.dataGridViewTextBoxColumn4.HeaderText = "IdEmpleado";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // fillToolStrip
+            // 
+            this.fillToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.idProductoToolStripLabel,
+            this.tbBuscarId,
+            this.btnBuscar,
+            this.btnCancelar});
+            this.fillToolStrip.Location = new System.Drawing.Point(0, 305);
+            this.fillToolStrip.Name = "fillToolStrip";
+            this.fillToolStrip.Size = new System.Drawing.Size(1064, 25);
+            this.fillToolStrip.TabIndex = 32;
+            this.fillToolStrip.Text = "fillToolStrip";
+            // 
+            // idProductoToolStripLabel
+            // 
+            this.idProductoToolStripLabel.Name = "idProductoToolStripLabel";
+            this.idProductoToolStripLabel.Size = new System.Drawing.Size(50, 22);
+            this.idProductoToolStripLabel.Text = "Usuario:";
+            // 
+            // tbBuscarId
+            // 
+            this.tbBuscarId.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbBuscarId.Name = "tbBuscarId";
+            this.tbBuscarId.Size = new System.Drawing.Size(100, 25);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(46, 22);
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+            this.btnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(57, 22);
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // FormUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 749);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1064, 573);
             this.Controls.Add(this.usuariosDataGridView);
+            this.Controls.Add(this.fillToolStrip);
             this.Controls.Add(this.gbBotones);
             this.Controls.Add(this.gbUsuarios);
             this.Controls.Add(this.panel2);
             this.Name = "FormUsuarios";
             this.Text = "FormUsuarios";
             this.Load += new System.EventHandler(this.FormUsuarios_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usuariosDataGridView)).EndInit();
             this.panel2.ResumeLayout(false);
             this.gbUsuarios.ResumeLayout(false);
             this.gbUsuarios.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sp_usuariosSelectBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.puntoDeVentaDataSet)).EndInit();
             this.gbBotones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.usuariosDataGridView)).EndInit();
+            this.fillToolStrip.ResumeLayout(false);
+            this.fillToolStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private PuntoDeVentaDataSet puntoDeVentaDataSet;
-        private System.Windows.Forms.BindingSource usuariosBindingSource;
-        private PuntoDeVentaDataSetTableAdapters.usuariosTableAdapter usuariosTableAdapter;
-        private System.Windows.Forms.DataGridView usuariosDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton rdInfo;
         private System.Windows.Forms.RadioButton rdBorrar;
@@ -417,7 +480,21 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.GroupBox gbBotones;
-        private PuntoDeVentaDataSetTableAdapters.Sp_EmpleadosSelectTableAdapter sp_EmpleadosSelectTableAdapter1;
         private System.Windows.Forms.ComboBox cbNivel;
+        private PuntoDeVentaDataSetTableAdapters.Sp_EmpleadosSelectTableAdapter sp_EmpleadosSelectTableAdapter1;
+        private PuntoDeVentaDataSet puntoDeVentaDataSet;
+        private System.Windows.Forms.BindingSource sp_usuariosSelectBindingSource;
+        private PuntoDeVentaDataSetTableAdapters.Sp_usuariosSelectTableAdapter sp_usuariosSelectTableAdapter;
+        private PuntoDeVentaDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridView usuariosDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.ToolStrip fillToolStrip;
+        private System.Windows.Forms.ToolStripLabel idProductoToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox tbBuscarId;
+        private System.Windows.Forms.ToolStripButton btnBuscar;
+        private System.Windows.Forms.ToolStripButton btnCancelar;
     }
 }

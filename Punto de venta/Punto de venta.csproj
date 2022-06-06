@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,29 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="Krypton.Toolkit, Version=65.22.4.94, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Krypton.Toolkit.65.22.4.94\lib\net472\Krypton.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Common, Version=65.22.4.94, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Krypton.Toolkit.Suite.Extended.Common.65.22.4.94\lib\net472\Krypton.Toolkit.Suite.Extended.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Developer.Utilities, Version=65.22.4.94, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Krypton.Toolkit.Suite.Extended.Developer.Utilities.65.22.4.94\lib\net472\Krypton.Toolkit.Suite.Extended.Developer.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Effects, Version=65.22.4.94, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Krypton.Toolkit.Suite.Extended.Effects.65.22.4.94\lib\net472\Krypton.Toolkit.Suite.Extended.Effects.dll</HintPath>
-    </Reference>
-    <Reference Include="Krypton.Toolkit.Suite.Extended.Tools, Version=65.22.4.94, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Krypton.Toolkit.Suite.Extended.Tools.65.22.4.94\lib\net472\Krypton.Toolkit.Suite.Extended.Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePackShell.1.1.2\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
@@ -138,12 +122,6 @@
     <Compile Include="Utilidades.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="prueba\prueba.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="prueba\prueba.Designer.cs">
-      <DependentUpon>prueba.cs</DependentUpon>
-    </Compile>
     <Compile Include="PuntoDeVentaDataSet.cs">
       <DependentUpon>PuntoDeVentaDataSet.xsd</DependentUpon>
     </Compile>
@@ -189,9 +167,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="prueba\prueba.resx">
-      <DependentUpon>prueba.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -310,13 +285,8 @@
   <ItemGroup>
     <None Include="Resources\Product Not Found %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Factura.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

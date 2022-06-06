@@ -15,8 +15,7 @@ namespace Punto_de_venta
         private void formClientes_Load(object sender, System.EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'puntoDeVentaDataSet.Clientes' Puede moverla o quitarla según sea necesario.
-            this.clientesTableAdapter.Fill(this.puntoDeVentaDataSet.Clientes);
-
+            this.sp_ClientesSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ClientesSelect, -1);
 
         }
 
@@ -43,7 +42,7 @@ namespace Punto_de_venta
 
                 //actualiza los datos
                 filaActual = clientesDataGridView.Rows.Count;
-                this.clientesTableAdapter.Fill(this.puntoDeVentaDataSet.Clientes);
+                this.sp_ClientesSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ClientesSelect, -1);
                 clientesDataGridView.CurrentCell = clientesDataGridView.Rows[filaActual].Cells[0];
                 Utilidades.LimpiarCampos(gbClientes.Controls);
                 tbIdCliente.Text = Utilidades.SiguienteID(queriesTableAdapter1, "Clientes");
@@ -59,6 +58,7 @@ namespace Punto_de_venta
                 //lanza un mensaje de confirmacion
                 MessageBox.Show("Actualizado Con Exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 filaActual = clientesDataGridView.Rows.IndexOf(clientesDataGridView.CurrentRow);
+                this.sp_ClientesSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ClientesSelect, -1);
                 clientesDataGridView.CurrentCell = clientesDataGridView.Rows[filaActual].Cells[0];
             }
 
@@ -81,6 +81,7 @@ namespace Punto_de_venta
 
         private void rdBorrar_CheckedChanged(object sender, EventArgs e)
         {
+
             //apaga todos los campos y enciende el boton borrar
             gbClientes.Enabled = !rdBorrar.Checked;
             btnGuardar.Enabled = !rdBorrar.Checked;
@@ -109,18 +110,30 @@ namespace Punto_de_venta
             }
             else
             {
-                this.clientesTableAdapter.Fill(this.puntoDeVentaDataSet.Clientes);
+                this.sp_ClientesSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ClientesSelect, -1);
             }
 
 
             //vuelve activar el datagrid
             clientesDataGridView.Enabled = !rdNuevo.Checked;
+            fillToolStrip.Enabled = !rdNuevo.Checked;
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
+            if (clientesDataGridView.Rows.Count <= 0)
+            {
+                return;
+            }
+
+            if ((bool)queriesTableAdapter1.ExisteClienteEnRegistros(Convert.ToInt32(tbIdCliente.Text)))
+            {
+                MessageBox.Show("No se puede borrar el Cliente debido a que ya " +
+                   "hay registros con este id", "Alerta!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             queriesTableAdapter1.Sp_ClientesDelete(Convert.ToInt32(tbIdCliente.Text));
-            this.clientesTableAdapter.Fill(this.puntoDeVentaDataSet.Clientes);
+            this.sp_ClientesSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ClientesSelect, -1);
             MessageBox.Show("Borrado Con Exito", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -145,6 +158,31 @@ namespace Punto_de_venta
                 pbFoto.Image = image;
         }
 
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.sp_ClientesSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ClientesSelect, new System.Nullable<int>(((int)(System.Convert.ChangeType(tbBuscarId.Text, typeof(int))))));
+               
+                if (rdNuevo.Checked)
+                {
+                    Utilidades.LimpiarCampos(gbClientes.Controls);
+                    tbIdCliente.Text = Utilidades.SiguienteID(queriesTableAdapter1, "Clientes");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.sp_ClientesSelectTableAdapter1.Fill(this.puntoDeVentaDataSet.Sp_ClientesSelect, -1);
+            tbBuscarId.Text = "";
+        }
     }
 }
 

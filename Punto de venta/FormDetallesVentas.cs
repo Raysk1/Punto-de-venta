@@ -5,14 +5,27 @@ namespace Punto_de_venta
 {
     public partial class FormDetallesVentas : Form
     {
+        int id = -1;
         public FormDetallesVentas()
         {
             InitializeComponent();
         }
 
+        public FormDetallesVentas(int id)
+        {
+            InitializeComponent();
+            this.id = id;
+        }
+
         private void formVentas_Load(object sender, EventArgs e)
         {
-
+            this.sp_VentaCuerpoSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_VentaCuerpoSelect, id);
+            float total = 0;
+            foreach (DataGridViewRow row in sp_VentaCuerpoSelectDataGridView.Rows)
+            {
+                total += Convert.ToInt64(row.Cells[4].Value);
+            }
+            tbTotal.Text = "" + total;
 
         }
 
@@ -21,13 +34,18 @@ namespace Punto_de_venta
         {
             try
             {
-                this.sp_VentaCuerpoSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_VentaCuerpoSelect, new System.Nullable<int>(((int)(System.Convert.ChangeType(idToolStripTextBox.Text, typeof(int))))));
+                this.sp_VentaCuerpoSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_VentaCuerpoSelect, id);
             }
             catch (System.Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Utilidades.principal.AbrirFormEnPanel(Utilidades.principal.ventas);
         }
     }
 }

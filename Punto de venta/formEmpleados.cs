@@ -35,7 +35,7 @@ namespace Punto_de_venta
 
                 //actualiza los datos
                 filaActual = empleadosDataGridView.Rows.Count - 1;
-                this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
+                this.sp_EmpleadosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelect, -1);
                 empleadosDataGridView.CurrentCell = empleadosDataGridView.Rows[filaActual].Cells[0];
                 Utilidades.LimpiarCampos(gbEmpleados.Controls);
                 tbIdEmpleado.Text = Utilidades.SiguienteID(queriesTableAdapter1, "Empleados");
@@ -56,7 +56,7 @@ namespace Punto_de_venta
                 MessageBox.Show("Actualizado Con Exito", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 filaActual = empleadosDataGridView.Rows.IndexOf(empleadosDataGridView.CurrentRow);
                 //actualiza los datos
-                this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
+                this.sp_EmpleadosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelect, -1);
                 empleadosDataGridView.CurrentCell = empleadosDataGridView.Rows[filaActual].Cells[0];
             }
 
@@ -75,7 +75,7 @@ namespace Punto_de_venta
         private void formEmpleados_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'puntoDeVentaDataSet.Empleados' Puede moverla o quitarla según sea necesario.
-            this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
+            this.sp_EmpleadosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelect, -1);
 
 
 
@@ -114,20 +114,36 @@ namespace Punto_de_venta
             }
             else
             {
-                this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
+                this.sp_EmpleadosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelect, -1);
             }
 
 
             //vuelve activar el datagrid
             empleadosDataGridView.Enabled = !rdNuevo.Checked;
             btnGuardar.Enabled = rdNuevo.Checked;
+            fillToolStrip.Enabled = !rdNuevo.Checked;
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
+            if (empleadosDataGridView.Rows.Count <= 0)
+            {
+                return;
+            }
+            
+
+            if ((bool)queriesTableAdapter1.ExisteEmpleadoEnRegistros(Convert.ToInt32(tbIdEmpleado.Text)))
+            {
+                MessageBox.Show("No se puede borrar el Empleado debido a que ya " +
+                   "hay registros con este id","Alerta!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return;
+            }
+
+
             //ejecuta un delete y actualiza el datagrid
             queriesTableAdapter1.Sp_EmpleadosDelete(Convert.ToInt32(tbIdEmpleado.Text));
-            this.empleadosTableAdapter.Fill(this.puntoDeVentaDataSet.Empleados);
+            this.sp_EmpleadosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelect, -1);
             MessageBox.Show("Borrado Con Exito", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -150,6 +166,36 @@ namespace Punto_de_venta
         {
 
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar);
+        }
+
+        private void btnBuscarId_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.sp_EmpleadosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelect, new System.Nullable<int>(((int)(System.Convert.ChangeType(tbBuscarId.Text, typeof(int))))));
+                if (rdNuevo.Checked)
+                {
+                    Utilidades.LimpiarCampos(gbEmpleados.Controls);
+                    tbIdEmpleado.Text = Utilidades.SiguienteID(queriesTableAdapter1, "Empleados");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.sp_EmpleadosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_EmpleadosSelect, -1);
+            tbBuscarId.Text = "";
+            
+        }
+
+        private void panelDatos_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
