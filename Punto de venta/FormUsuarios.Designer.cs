@@ -243,7 +243,6 @@
             // 
             // cbNivel
             // 
-            this.cbNivel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.sp_usuariosSelectBindingSource, "IdNivel", true));
             this.cbNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNivel.FormattingEnabled = true;
             this.cbNivel.Items.AddRange(new object[] {
@@ -271,6 +270,7 @@
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(179, 26);
             this.tbUsuario.TabIndex = 1;
+            this.tbUsuario.TextChanged += new System.EventHandler(this.tbUsuario_TextChanged);
             // 
             // tbClave
             // 

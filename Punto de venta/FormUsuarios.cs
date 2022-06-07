@@ -23,18 +23,19 @@ namespace Punto_de_venta
 
         private void btnGuardar_Click(object sender, System.EventArgs e)
         {
-            if (sp_EmpleadosSelectTableAdapter1.GetData(Convert.ToInt32(tbIdEmpleado.Text)).Rows.Count == 0)
-            {
-                MessageBox.Show("El id de empleado no existe, por favor verifique el id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+           
             if (!Utilidades.ComprobarCampos(gbUsuarios.Controls))
             {
                 //lanza un mensaje alertando llenar los campos
                 MessageBox.Show("Debe llenar todos los campos", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            if (sp_EmpleadosSelectTableAdapter1.GetData(Convert.ToInt32(tbIdEmpleado.Text)).Rows.Count == 0)
+            {
+                MessageBox.Show("El id de empleado no existe, por favor verifique el id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
 
 
             int nivel = cbNivel.Text == "Admin" ? 1 : 2;
@@ -91,6 +92,7 @@ namespace Punto_de_venta
             }
             this.sp_usuariosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_usuariosSelect, "-1");
             usuariosDataGridView.CurrentCell = usuariosDataGridView.Rows[filaActual].Cells[0];
+            Utilidades.LimpiarCampos(gbUsuarios.Controls);
 
 
 
@@ -194,6 +196,27 @@ namespace Punto_de_venta
         {
             this.sp_usuariosSelectTableAdapter.Fill(this.puntoDeVentaDataSet.Sp_usuariosSelect, "-1");
             tbBuscarId.Text = "";
+        }
+
+        private void tbUsuario_TextChanged(object sender, EventArgs e)
+        {
+            String nivel = "";
+            if (usuariosDataGridView.CurrentRow == null)
+            {
+                return;
+            }
+            switch ((int)usuariosDataGridView.CurrentRow.Cells[2].Value)
+            {
+                case 1:
+                    nivel = "Admin";
+                    break;
+                case 2:
+                    nivel = "Empleado";
+                    break;
+                case 3:
+                    nivel = "Cliente";
+                    break;
+            }
         }
     }
 }
