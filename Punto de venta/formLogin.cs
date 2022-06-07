@@ -9,6 +9,7 @@ namespace Punto_de_venta
         public FormLogin()
         {
             InitializeComponent();
+            Utilidades.login = this;
         }
 
         private void btnAceptar_Click(object sender, System.EventArgs e)
@@ -25,8 +26,20 @@ namespace Punto_de_venta
                 {
                     FormPrincipal Principal1 = new FormPrincipal();
                     Principal1.Show();
+                }else if(Usuario.nivel == 2)
+                {
+                    FormGenerarVenta generarVenta = new FormGenerarVenta();
+                    generarVenta.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o Contraseña incorrecta");
+                    tbPassword.Text = "";
+                    return;
                 }
                 this.Visible = false;
+                tbPassword.Text = "";
+                tbUsuario.Text = "";
             }
             else
             {
@@ -34,6 +47,7 @@ namespace Punto_de_venta
                 tbPassword.Text = "";
 
             }
+
         }
 
         private bool ComprobarLogin()

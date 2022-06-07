@@ -11,6 +11,8 @@ namespace Punto_de_venta
         FormClientes clientes;
         public FormVentas ventas;
         FormUsuarios usuarios;
+        FormGenerarVenta generarVenta;
+        FormReloj reloj;
         public FormPrincipal()
         {
             InitializeComponent();
@@ -19,6 +21,8 @@ namespace Punto_de_venta
             clientes = new FormClientes();
             ventas = new FormVentas();
             usuarios = new FormUsuarios();
+            generarVenta = new FormGenerarVenta();
+            reloj = new FormReloj();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -26,19 +30,6 @@ namespace Punto_de_venta
             Application.Exit();
         }
 
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            btnMaximizar.Visible = false;
-            btnRestaurar.Visible = true;
-        }
-
-        private void btnRestaurar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            btnRestaurar.Visible = false;
-            btnMaximizar.Visible = true;
-        }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
@@ -49,6 +40,7 @@ namespace Punto_de_venta
         {
             btninicio_Click(null, e);
             Utilidades.principal = this;
+            AbrirFormEnPanel(reloj);
 
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -65,23 +57,10 @@ namespace Punto_de_venta
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            SubmenuReportes.Visible = true;
+           
         }
 
-        private void btnrptventa_Click(object sender, EventArgs e)
-        {
-            SubmenuReportes.Visible = false;
-        }
-
-        private void btnrptcompra_Click(object sender, EventArgs e)
-        {
-            SubmenuReportes.Visible = false;
-        }
-
-        private void btnrptpagos_Click(object sender, EventArgs e)
-        {
-            SubmenuReportes.Visible = false;
-        }
+        
 
         public void AbrirFormEnPanel(object formhija)
         {
@@ -99,7 +78,7 @@ namespace Punto_de_venta
 
         private void btninicio_Click(object sender, EventArgs e)
         {
-
+            AbrirFormEnPanel(reloj);
         }
 
         private void btnEmpleados_Click(object sender, EventArgs e)
@@ -109,7 +88,8 @@ namespace Punto_de_venta
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Utilidades.login.Visible = true;
+            this.Close();
         }
 
         private void btnProductos_Click(object sender, EventArgs e)
@@ -135,7 +115,8 @@ namespace Punto_de_venta
 
         private void btnPagos_Click(object sender, EventArgs e)
         {
-            new FormGenerarVenta().Show();
+            generarVenta.BarraTitulo.Size = System.Drawing.Size.Empty;
+            AbrirFormEnPanel(generarVenta);
         }
     }
 }

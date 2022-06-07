@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormReloj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReloj.Designer.cs">
+      <DependentUpon>FormReloj.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReloj.resx">
+      <DependentUpon>FormReloj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUsuarios.resx">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
