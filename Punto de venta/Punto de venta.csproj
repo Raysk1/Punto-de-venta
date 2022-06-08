@@ -297,5 +297,8 @@
   <ItemGroup>
     <None Include="Resources\Factura.html" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lmLogoITSE.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

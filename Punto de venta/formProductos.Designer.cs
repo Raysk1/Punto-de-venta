@@ -149,7 +149,7 @@
             this.tbNombre.Location = new System.Drawing.Point(145, 60);
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(160, 23);
-            this.tbNombre.TabIndex = 0;
+            this.tbNombre.TabIndex = 1;
             // 
             // sp_ProductosSelectBindingSource
             // 
@@ -168,7 +168,7 @@
             this.tbID.Location = new System.Drawing.Point(146, 27);
             this.tbID.Name = "tbID";
             this.tbID.Size = new System.Drawing.Size(159, 23);
-            this.tbID.TabIndex = 1;
+            this.tbID.TabIndex = 0;
             this.tbID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros_KeyPress);
             // 
             // tbPrecio
@@ -238,7 +238,7 @@
             this.cbCancelado.Location = new System.Drawing.Point(613, 27);
             this.cbCancelado.Name = "cbCancelado";
             this.cbCancelado.Size = new System.Drawing.Size(95, 20);
-            this.cbCancelado.TabIndex = 21;
+            this.cbCancelado.TabIndex = 7;
             this.cbCancelado.Text = "Cancelado:";
             this.cbCancelado.UseVisualStyleBackColor = true;
             // 
@@ -250,7 +250,7 @@
             this.tbEnPedido.Location = new System.Drawing.Point(439, 92);
             this.tbEnPedido.Name = "tbEnPedido";
             this.tbEnPedido.Size = new System.Drawing.Size(152, 23);
-            this.tbEnPedido.TabIndex = 17;
+            this.tbEnPedido.TabIndex = 5;
             this.tbEnPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros_KeyPress);
             // 
             // lblEnPedido
@@ -270,7 +270,7 @@
             this.tbCantidadUnidad.Location = new System.Drawing.Point(439, 57);
             this.tbCantidadUnidad.Name = "tbCantidadUnidad";
             this.tbCantidadUnidad.Size = new System.Drawing.Size(152, 23);
-            this.tbCantidadUnidad.TabIndex = 15;
+            this.tbCantidadUnidad.TabIndex = 4;
             // 
             // lblcantidadUnidad
             // 
@@ -287,7 +287,7 @@
             this.btnAgregarFoto.Location = new System.Drawing.Point(783, 172);
             this.btnAgregarFoto.Name = "btnAgregarFoto";
             this.btnAgregarFoto.Size = new System.Drawing.Size(200, 43);
-            this.btnAgregarFoto.TabIndex = 5;
+            this.btnAgregarFoto.TabIndex = 8;
             this.btnAgregarFoto.Text = "Agregar Foto";
             this.btnAgregarFoto.UseVisualStyleBackColor = true;
             this.btnAgregarFoto.Click += new System.EventHandler(this.btnAgregarFoto_Click);
@@ -300,7 +300,7 @@
             this.tbDescripcion.Multiline = true;
             this.tbDescripcion.Name = "tbDescripcion";
             this.tbDescripcion.Size = new System.Drawing.Size(444, 80);
-            this.tbDescripcion.TabIndex = 4;
+            this.tbDescripcion.TabIndex = 6;
             // 
             // panel2
             // 
@@ -456,7 +456,7 @@
             this.btnBorrar.Location = new System.Drawing.Point(581, 22);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 23);
-            this.btnBorrar.TabIndex = 12;
+            this.btnBorrar.TabIndex = 10;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
@@ -467,7 +467,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(404, 22);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 11;
+            this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);

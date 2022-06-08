@@ -148,11 +148,11 @@
             this.lblNomPrograma.BackColor = System.Drawing.Color.Transparent;
             this.lblNomPrograma.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomPrograma.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNomPrograma.Location = new System.Drawing.Point(53, 102);
+            this.lblNomPrograma.Location = new System.Drawing.Point(146, 102);
             this.lblNomPrograma.Name = "lblNomPrograma";
-            this.lblNomPrograma.Size = new System.Drawing.Size(291, 36);
+            this.lblNomPrograma.Size = new System.Drawing.Size(196, 36);
             this.lblNomPrograma.TabIndex = 11;
-            this.lblNomPrograma.Text = "Nombre del Software  |";
+            this.lblNomPrograma.Text = "Papeleria ITS  |";
             // 
             // puntoDeVentaDataSet
             // 

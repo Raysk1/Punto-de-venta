@@ -15,6 +15,7 @@ namespace Punto_de_venta
         private void btnAceptar_Click(object sender, System.EventArgs e)
         {
 
+            
             datos = loginTableAdapter.GetData(tbUsuario.Text, tbPassword.Text);
             if (ComprobarLogin())
             {

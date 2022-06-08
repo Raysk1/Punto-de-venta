@@ -204,6 +204,16 @@ namespace Punto_de_venta.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lmLogoITSE {
+            get {
+                object obj = ResourceManager.GetObject("lmLogoITSE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mas__1_ {
             get {
                 object obj = ResourceManager.GetObject("mas__1_", resourceCulture);
